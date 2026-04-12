@@ -1,0 +1,854 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KidsCoach — Fun & Professional Training</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Baloo+2:wght@700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --blue: #3B9EFF;
+    --blue-light: #D6EEFF;
+    --orange: #FF7A2F;
+    --orange-light: #FFE8D6;
+    --green: #2EC97A;
+    --green-light: #D3F7E8;
+    --yellow: #FFD93D;
+    --purple: #A78BFA;
+    --bg: #FFFDF8;
+    --text: #1A1A2E;
+    --text-muted: #6B7280;
+    --card-bg: #FFFFFF;
+    --radius: 24px;
+    --radius-sm: 14px;
+    --shadow: 0 8px 32px rgba(0,0,0,0.08);
+    --shadow-hover: 0 16px 48px rgba(0,0,0,0.14);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Nunito', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 14px 6vw;
+    background: rgba(255,253,248,0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 2px solid #F0EBE0;
+  }
+  .nav-logo {
+    font-family: 'Baloo 2', cursive;
+    font-size: 1.6rem; font-weight: 800;
+    color: var(--blue);
+    text-decoration: none;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .nav-logo span { color: var(--orange); }
+  .nav-links { display: flex; gap: 32px; list-style: none; }
+  .nav-links a {
+    text-decoration: none; font-weight: 700; font-size: .95rem;
+    color: var(--text-muted); transition: color .2s;
+  }
+  .nav-links a:hover { color: var(--blue); }
+  .nav-cta {
+    background: var(--orange); color: #fff;
+    border: none; border-radius: 50px; padding: 10px 22px;
+    font-family: 'Nunito', sans-serif; font-weight: 800; font-size: .95rem;
+    cursor: pointer; transition: transform .2s, box-shadow .2s;
+    text-decoration: none;
+  }
+  .nav-cta:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(255,122,47,.35); }
+
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+  .hamburger span { width: 26px; height: 3px; background: var(--text); border-radius: 4px; transition: .3s; }
+
+  /* ── HERO ── */
+  #hero {
+    min-height: 100vh;
+    display: flex; align-items: center;
+    padding: 120px 6vw 80px;
+    position: relative; overflow: hidden;
+    background: linear-gradient(135deg, #EBF6FF 0%, #FFF8F0 50%, #EDFFF5 100%);
+  }
+
+  .hero-blobs {
+    position: absolute; inset: 0; pointer-events: none; z-index: 0;
+  }
+  .blob {
+    position: absolute; border-radius: 50%; filter: blur(60px); opacity: .45;
+    animation: blobFloat 8s ease-in-out infinite;
+  }
+  .blob-1 { width: 420px; height: 420px; background: var(--blue); top: -100px; right: 5%; animation-delay: 0s; }
+  .blob-2 { width: 300px; height: 300px; background: var(--orange); bottom: 0; right: 25%; animation-delay: 3s; }
+  .blob-3 { width: 250px; height: 250px; background: var(--green); top: 30%; left: -80px; animation-delay: 5s; }
+  @keyframes blobFloat {
+    0%,100% { transform: translateY(0) scale(1); }
+    50% { transform: translateY(-30px) scale(1.05); }
+  }
+
+  .hero-content { position: relative; z-index: 1; max-width: 620px; }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--yellow); color: var(--text);
+    border-radius: 50px; padding: 6px 18px;
+    font-weight: 800; font-size: .85rem;
+    margin-bottom: 24px;
+    animation: fadeSlideUp .6s ease both;
+  }
+  .hero-badge .dot { width: 8px; height: 8px; background: var(--orange); border-radius: 50%; animation: pulse 1.5s infinite; }
+  @keyframes pulse { 0%,100%{transform:scale(1);opacity:1} 50%{transform:scale(1.4);opacity:.7} }
+
+  h1 {
+    font-family: 'Baloo 2', cursive;
+    font-size: clamp(2.4rem, 6vw, 4rem);
+    font-weight: 800; line-height: 1.15;
+    margin-bottom: 20px;
+    animation: fadeSlideUp .6s .1s ease both;
+  }
+  h1 .accent-blue { color: var(--blue); }
+  h1 .accent-orange { color: var(--orange); }
+
+  .hero-sub {
+    font-size: 1.15rem; color: var(--text-muted);
+    line-height: 1.7; margin-bottom: 36px;
+    animation: fadeSlideUp .6s .2s ease both;
+  }
+
+  .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; animation: fadeSlideUp .6s .3s ease both; }
+  .btn-primary {
+    background: var(--blue); color: #fff;
+    border: none; border-radius: 50px; padding: 16px 32px;
+    font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 1rem;
+    cursor: pointer; transition: transform .2s, box-shadow .2s;
+    text-decoration: none; display: inline-block;
+  }
+  .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 12px 32px rgba(59,158,255,.4); }
+  .btn-secondary {
+    background: transparent; color: var(--text);
+    border: 2px solid var(--text); border-radius: 50px; padding: 14px 30px;
+    font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 1rem;
+    cursor: pointer; transition: all .2s; text-decoration: none; display: inline-block;
+  }
+  .btn-secondary:hover { background: var(--text); color: #fff; }
+
+  .hero-stats {
+    display: flex; gap: 32px; margin-top: 48px;
+    animation: fadeSlideUp .6s .4s ease both;
+  }
+  .stat { text-align: center; }
+  .stat-num { font-family: 'Baloo 2', cursive; font-size: 2rem; font-weight: 800; color: var(--blue); }
+  .stat-label { font-size: .8rem; color: var(--text-muted); font-weight: 700; text-transform: uppercase; letter-spacing: .05em; }
+
+  .hero-visual {
+    position: absolute; right: 5vw; top: 50%; transform: translateY(-50%);
+    z-index: 1;
+    animation: fadeSlideUp .8s .2s ease both;
+  }
+  .hero-card-float {
+    background: #fff; border-radius: var(--radius); padding: 24px 28px;
+    box-shadow: var(--shadow);
+    display: flex; align-items: center; gap: 14px;
+    margin-bottom: 16px;
+    transition: transform .3s;
+    animation: floatCard 5s ease-in-out infinite;
+  }
+  .hero-card-float:nth-child(2) { animation-delay: 1.5s; margin-left: 40px; }
+  .hero-card-float:nth-child(3) { animation-delay: 3s; margin-left: 10px; }
+  @keyframes floatCard { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }
+  .hcf-icon { width: 52px; height: 52px; border-radius: 14px; display: grid; place-items: center; font-size: 1.6rem; }
+  .hcf-icon.blue { background: var(--blue-light); }
+  .hcf-icon.orange { background: var(--orange-light); }
+  .hcf-icon.green { background: var(--green-light); }
+  .hcf-text strong { display: block; font-weight: 800; font-size: .95rem; }
+  .hcf-text span { font-size: .8rem; color: var(--text-muted); }
+
+  @keyframes fadeSlideUp { from { opacity: 0; transform: translateY(28px); } to { opacity: 1; transform: translateY(0); } }
+
+  /* ── SECTIONS COMMON ── */
+  section { padding: 90px 6vw; }
+  .section-label {
+    display: inline-block;
+    font-weight: 800; font-size: .8rem; letter-spacing: .1em; text-transform: uppercase;
+    padding: 6px 16px; border-radius: 50px; margin-bottom: 14px;
+  }
+  .label-blue { background: var(--blue-light); color: var(--blue); }
+  .label-orange { background: var(--orange-light); color: var(--orange); }
+  .label-green { background: var(--green-light); color: var(--green); }
+  .label-purple { background: #EDE9FE; color: var(--purple); }
+
+  h2 {
+    font-family: 'Baloo 2', cursive;
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    font-weight: 800; line-height: 1.2; margin-bottom: 16px;
+  }
+  .section-sub { font-size: 1.05rem; color: var(--text-muted); max-width: 520px; line-height: 1.7; }
+
+  /* ── ABOUT ── */
+  #about { background: #fff; }
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; margin-top: 48px; }
+  .about-img-wrap {
+    position: relative; border-radius: var(--radius); overflow: hidden;
+    aspect-ratio: 4/5;
+    background: linear-gradient(135deg, var(--blue-light), var(--green-light));
+    display: flex; align-items: center; justify-content: center;
+    font-size: 10rem;
+  }
+  .about-badge-wrap {
+    position: absolute; bottom: 24px; left: 24px;
+    background: #fff; border-radius: var(--radius-sm); padding: 16px 20px;
+    box-shadow: var(--shadow); display: flex; align-items: center; gap: 12px;
+  }
+  .about-badge-icon { font-size: 2rem; }
+  .about-badge-text strong { display: block; font-weight: 800; }
+  .about-badge-text span { font-size: .8rem; color: var(--text-muted); }
+  .about-features { display: flex; flex-direction: column; gap: 20px; margin-top: 32px; }
+  .about-feature {
+    display: flex; align-items: flex-start; gap: 16px;
+    background: var(--bg); border-radius: var(--radius-sm);
+    padding: 18px 22px;
+    transition: transform .2s, box-shadow .2s;
+  }
+  .about-feature:hover { transform: translateX(6px); box-shadow: var(--shadow); }
+  .af-icon { width: 44px; height: 44px; border-radius: 12px; display: grid; place-items: center; font-size: 1.3rem; flex-shrink: 0; }
+  .af-text strong { display: block; font-weight: 800; margin-bottom: 4px; }
+  .af-text span { font-size: .88rem; color: var(--text-muted); }
+
+  /* ── PROGRAMS ── */
+  #programs { background: var(--bg); }
+  .programs-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; margin-top: 48px; }
+  .program-card {
+    background: var(--card-bg); border-radius: var(--radius);
+    padding: 36px 32px; box-shadow: var(--shadow);
+    position: relative; overflow: hidden;
+    transition: transform .3s, box-shadow .3s;
+    cursor: default;
+  }
+  .program-card:hover { transform: translateY(-8px); box-shadow: var(--shadow-hover); }
+  .program-card::before {
+    content: ''; position: absolute; top: -60px; right: -60px;
+    width: 180px; height: 180px; border-radius: 50%; opacity: .12;
+  }
+  .program-card.blue::before { background: var(--blue); }
+  .program-card.orange::before { background: var(--orange); }
+  .program-card.green::before { background: var(--green); }
+  .program-icon { font-size: 3rem; margin-bottom: 20px; }
+  .program-level {
+    display: inline-block; font-size: .75rem; font-weight: 800; letter-spacing: .08em;
+    text-transform: uppercase; padding: 4px 14px; border-radius: 50px; margin-bottom: 16px;
+  }
+  .program-card.blue .program-level { background: var(--blue-light); color: var(--blue); }
+  .program-card.orange .program-level { background: var(--orange-light); color: var(--orange); }
+  .program-card.green .program-level { background: var(--green-light); color: var(--green); }
+  .program-card h3 { font-family: 'Baloo 2', cursive; font-size: 1.5rem; font-weight: 800; margin-bottom: 12px; }
+  .program-card p { color: var(--text-muted); font-size: .92rem; line-height: 1.65; margin-bottom: 20px; }
+  .program-ages {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: var(--bg); border-radius: 50px; padding: 6px 14px;
+    font-size: .82rem; font-weight: 700;
+  }
+
+  /* exercises */
+  .program-exercises { margin-top: 18px; }
+  .program-exercises summary {
+    cursor: pointer; font-weight: 800; font-size: .9rem;
+    color: var(--text-muted); list-style: none;
+    display: flex; align-items: center; gap: 6px;
+    transition: color .2s;
+  }
+  .program-exercises summary:hover { color: var(--blue); }
+  .program-exercises summary::before { content: '▶'; font-size: .7rem; transition: transform .2s; }
+  details[open] summary::before { transform: rotate(90deg); }
+  .ex-list { margin-top: 12px; display: flex; flex-direction: column; gap: 8px; }
+  .ex-item {
+    display: flex; align-items: center; gap: 10px;
+    background: var(--bg); border-radius: 10px; padding: 10px 14px;
+    font-size: .85rem; font-weight: 600;
+  }
+  .ex-item .ex-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+  .blue .ex-dot { background: var(--blue); }
+  .orange .ex-dot { background: var(--orange); }
+  .green .ex-dot { background: var(--green); }
+
+  /* ── BOOKING (Calendly) ── */
+  #booking {
+    background: linear-gradient(160deg, #0f1f3d 0%, #1a3a6e 45%, #0e2d55 100%);
+    position: relative; overflow: hidden;
+    padding: 100px 6vw 110px;
+  }
+
+  /* Animated floating orbs */
+  .booking-orb {
+    position: absolute; border-radius: 50%; pointer-events: none;
+    filter: blur(72px); opacity: .22;
+    animation: orbDrift 12s ease-in-out infinite;
+  }
+  .booking-orb-1 {
+    width: 500px; height: 500px;
+    background: radial-gradient(circle, var(--blue), transparent);
+    top: -160px; left: -120px;
+    animation-delay: 0s;
+  }
+  .booking-orb-2 {
+    width: 380px; height: 380px;
+    background: radial-gradient(circle, var(--orange), transparent);
+    bottom: -100px; right: -80px;
+    animation-delay: 4s;
+  }
+  .booking-orb-3 {
+    width: 260px; height: 260px;
+    background: radial-gradient(circle, var(--green), transparent);
+    top: 40%; left: 55%;
+    animation-delay: 7s; opacity: .13;
+  }
+  @keyframes orbDrift {
+    0%,100% { transform: translate(0,0) scale(1); }
+    33%  { transform: translate(30px,-40px) scale(1.06); }
+    66%  { transform: translate(-20px, 30px) scale(.95); }
+  }
+
+  /* Star-dot grid texture */
+  #booking::before {
+    content: '';
+    position: absolute; inset: 0;
+    background-image: radial-gradient(rgba(255,255,255,.07) 1px, transparent 1px);
+    background-size: 36px 36px;
+    pointer-events: none; z-index: 0;
+  }
+
+  /* Header */
+  .booking-header {
+    text-align: center; margin-bottom: 14px;
+    position: relative; z-index: 1;
+  }
+  .booking-header .section-label {
+    background: rgba(59,158,255,.18); color: #7EC8FF;
+    border: 1px solid rgba(59,158,255,.3);
+    backdrop-filter: blur(8px);
+  }
+  .booking-header h2 {
+    color: #fff;
+    text-shadow: 0 2px 24px rgba(59,158,255,.3);
+  }
+
+  .booking-subtext {
+    text-align: center; color: rgba(255,255,255,.65);
+    font-size: 1.05rem; line-height: 1.75;
+    max-width: 540px; margin: 0 auto 52px;
+    position: relative; z-index: 1;
+  }
+
+  /* Calendly card */
+  .calendly-outer {
+    position: relative; z-index: 1;
+    max-width: 960px; margin: 0 auto;
+  }
+  /* Glowing border ring */
+  .calendly-glow-ring {
+    position: absolute; inset: -3px; border-radius: calc(var(--radius) + 3px);
+    background: linear-gradient(135deg, rgba(59,158,255,.6), rgba(46,201,122,.4), rgba(255,122,47,.5));
+    z-index: 0;
+    animation: ringRotate 6s linear infinite;
+  }
+  @keyframes ringRotate {
+    0%   { filter: hue-rotate(0deg)   blur(4px); }
+    100% { filter: hue-rotate(360deg) blur(4px); }
+  }
+  .calendly-wrap {
+    position: relative; z-index: 1;
+    background: #fff;
+    border-radius: var(--radius);
+    box-shadow: 0 32px 80px rgba(0,0,0,.45), 0 0 0 1px rgba(255,255,255,.08);
+    /* NO overflow:hidden — let Calendly iframe grow freely */
+    overflow: visible;
+    opacity: 0; transform: translateY(40px);
+    transition: opacity .8s ease, transform .8s ease;
+  }
+  .calendly-wrap.visible {
+    opacity: 1; transform: translateY(0);
+  }
+  /* Top accent bar — separate div so overflow:visible doesn't break it */
+  .calendly-accent-bar {
+    height: 4px;
+    background: linear-gradient(90deg, var(--blue), var(--green), var(--orange));
+    border-radius: var(--radius) var(--radius) 0 0;
+  }
+
+
+  /* Trust badges */
+  .booking-trust {
+    display: flex; justify-content: center; gap: 16px;
+    flex-wrap: wrap; margin-top: 36px;
+    position: relative; z-index: 1;
+  }
+  .trust-item {
+    display: flex; align-items: center; gap: 9px;
+    background: rgba(255,255,255,.09);
+    border: 1px solid rgba(255,255,255,.15);
+    backdrop-filter: blur(12px);
+    border-radius: 50px; padding: 11px 22px;
+    font-size: .86rem; font-weight: 700; color: rgba(255,255,255,.85);
+    transition: background .25s, transform .25s;
+    cursor: default;
+  }
+  .trust-item:hover {
+    background: rgba(255,255,255,.16);
+    transform: translateY(-3px);
+  }
+
+  /* Success overlay */
+  .success-overlay {
+    display: none; position: fixed; inset: 0; z-index: 999;
+    background: rgba(0,0,0,.5); backdrop-filter: blur(6px);
+    align-items: center; justify-content: center;
+  }
+  .success-overlay.show { display: flex; }
+  .success-box {
+    background: #fff; border-radius: var(--radius); padding: 56px 48px;
+    text-align: center; max-width: 440px; width: 90%;
+    animation: popIn .4s cubic-bezier(.34,1.56,.64,1) both;
+  }
+  @keyframes popIn { from{transform:scale(.7);opacity:0} to{transform:scale(1);opacity:1} }
+  .success-icon { font-size: 5rem; margin-bottom: 20px; }
+  .success-box h3 { font-family: 'Baloo 2', cursive; font-size: 1.8rem; font-weight: 800; margin-bottom: 12px; color: var(--green); }
+  .success-box p { color: var(--text-muted); margin-bottom: 28px; line-height: 1.6; }
+  .btn-close-success {
+    background: var(--green); color: #fff; border: none;
+    border-radius: 50px; padding: 14px 32px;
+    font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 1rem;
+    cursor: pointer; transition: transform .2s;
+  }
+  .btn-close-success:hover { transform: scale(1.04); }
+
+  /* ── NEWS ── */
+  #news { background: #fff; }
+  .news-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 48px; }
+  .news-card {
+    border-radius: var(--radius); overflow: hidden;
+    box-shadow: var(--shadow); transition: transform .3s;
+  }
+  .news-card:hover { transform: translateY(-6px); }
+  .news-thumb {
+    height: 140px; display: flex; align-items: center; justify-content: center;
+    font-size: 4rem;
+  }
+  .news-thumb.blue { background: var(--blue-light); }
+  .news-thumb.orange { background: var(--orange-light); }
+  .news-thumb.green { background: var(--green-light); }
+  .news-body { padding: 24px; }
+  .news-date { font-size: .78rem; color: var(--text-muted); font-weight: 700; margin-bottom: 8px; text-transform: uppercase; letter-spacing: .05em; }
+  .news-body h4 { font-family: 'Baloo 2', cursive; font-size: 1.1rem; font-weight: 800; margin-bottom: 8px; }
+  .news-body p { font-size: .88rem; color: var(--text-muted); line-height: 1.6; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--text);
+    color: #fff; padding: 60px 6vw 32px;
+  }
+  .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 48px; margin-bottom: 48px; }
+  .footer-brand .nav-logo { color: var(--blue-light); margin-bottom: 16px; display: inline-flex; }
+  .footer-brand p { color: rgba(255,255,255,.6); font-size: .9rem; line-height: 1.7; max-width: 280px; }
+  .footer-col h5 { font-weight: 800; margin-bottom: 20px; font-size: 1rem; }
+  .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .footer-col a { color: rgba(255,255,255,.6); text-decoration: none; font-size: .9rem; transition: color .2s; }
+  .footer-col a:hover { color: #fff; }
+  .social-links { display: flex; gap: 12px; margin-top: 24px; }
+  .social-link {
+    width: 40px; height: 40px; border-radius: 50%;
+    background: rgba(255,255,255,.1); display: grid; place-items: center;
+    text-decoration: none; font-size: 1.2rem;
+    transition: background .2s, transform .2s;
+  }
+  .social-link:hover { background: var(--blue); transform: translateY(-3px); }
+  .footer-bottom {
+    border-top: 1px solid rgba(255,255,255,.1);
+    padding-top: 24px; text-align: center;
+    color: rgba(255,255,255,.4); font-size: .85rem;
+  }
+
+  /* ── SCROLL REVEAL ── */
+  .reveal { opacity: 0; transform: translateY(32px); transition: opacity .7s ease, transform .7s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    .hero-visual { display: none; }
+    .about-grid, .booking-grid { grid-template-columns: 1fr; }
+    .programs-grid, .news-grid { grid-template-columns: 1fr 1fr; }
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+    .form-row { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 640px) {
+    .nav-links, .nav-cta { display: none; }
+    .hamburger { display: flex; }
+    .programs-grid, .news-grid { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: 1fr; }
+    .hero-stats { gap: 20px; }
+    .booking-form { padding: 28px 20px; }
+  }
+
+  /* Mobile menu */
+  .mobile-menu {
+    display: none; position: fixed; inset: 0; z-index: 99;
+    background: var(--bg); flex-direction: column;
+    align-items: center; justify-content: center; gap: 32px;
+  }
+  .mobile-menu.open { display: flex; }
+  .mobile-menu a {
+    font-family: 'Baloo 2', cursive; font-size: 2rem; font-weight: 800;
+    color: var(--text); text-decoration: none; transition: color .2s;
+  }
+  .mobile-menu a:hover { color: var(--blue); }
+  .mobile-close { position: absolute; top: 20px; right: 24px; font-size: 2rem; cursor: pointer; background: none; border: none; }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">Kids<span>Coach</span> 🏃</a>
+  <ul class="nav-links">
+    <li><a href="#about">За Нас</a></li>
+    <li><a href="#programs">Програми</a></li>
+    <li><a href="#booking">Резервирай</a></li>
+    <li><a href="#news">Новини</a></li>
+  </ul>
+  <a href="#booking" class="nav-cta">Запиши се →</a>
+  <div class="hamburger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-close" onclick="toggleMenu()">✕</button>
+  <a href="#about" onclick="toggleMenu()">За Нас</a>
+  <a href="#programs" onclick="toggleMenu()">Програми</a>
+  <a href="#booking" onclick="toggleMenu()">Резервирай</a>
+  <a href="#news" onclick="toggleMenu()">Новини</a>
+</div>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-blobs">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+  </div>
+  <div class="hero-content">
+    <div class="hero-badge">
+      <span class="dot"></span>
+      Записванията са отворени за лято 2025!
+    </div>
+    <h1>
+      <span class="accent-blue">Кондиционни</span><br>
+      Тренировки за <span class="accent-orange">Деца</span> 🌟
+    </h1>
+    <p class="hero-sub">
+      Помагаме на децата да станат по-силни, по-здрави и по-уверени —<br>
+      чрез игра, движение и позитивна енергия!
+    </p>
+    <div class="hero-btns">
+      <a href="#booking" class="btn-primary">📅 Запиши тренировка</a>
+      <a href="#programs" class="btn-secondary">Виж програмите</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat">
+        <div class="stat-num">150+</div>
+        <div class="stat-label">Деца</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">5г.</div>
+        <div class="stat-label">Опит</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">98%</div>
+        <div class="stat-label">Доволни родители</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-visual">
+    <div class="hero-card-float">
+      <div class="hcf-icon blue">🏋️</div>
+      <div class="hcf-text">
+        <strong>Силова тренировка</strong>
+        <span>Подходяща за деца 8–12 г.</span>
+      </div>
+    </div>
+    <div class="hero-card-float">
+      <div class="hcf-icon orange">⚡</div>
+      <div class="hcf-text">
+        <strong>Скорост &amp; Агилност</strong>
+        <span>Подходяща за деца 5–10 г.</span>
+      </div>
+    </div>
+    <div class="hero-card-float">
+      <div class="hcf-icon green">🧘</div>
+      <div class="hcf-text">
+        <strong>Гъвкавост &amp; Баланс</strong>
+        <span>За всички възрасти</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-grid reveal">
+    <div class="about-img-wrap">
+      🏅
+      <div class="about-badge-wrap">
+        <div class="about-badge-icon">🎖️</div>
+        <div class="about-badge-text">
+          <strong>Сертифициран треньор</strong>
+          <span>Детски фитнес специалист</span>
+        </div>
+      </div>
+    </div>
+    <div>
+      <span class="section-label label-blue">За треньора</span>
+      <h2>Здравей, аз съм<br><span style="color:var(--blue)">Мартин Костов!</span> 👋</h2>
+      <p class="section-sub">
+        С над 5 години опит в детския спорт, съм посветен да създавам
+        безопасна, весела и вдъхновяваща среда за всяко дете.
+        Вярвам, че всяко дете има потенциал — нужно е само правилното
+        напътствие!
+      </p>
+      <div class="about-features">
+        <div class="about-feature">
+          <div class="af-icon" style="background:var(--blue-light)">🛡️</div>
+          <div class="af-text">
+            <strong>Безопасност на първо място</strong>
+            <span>Всички упражнения са адаптирани и безопасни за детското тяло</span>
+          </div>
+        </div>
+        <div class="about-feature">
+          <div class="af-icon" style="background:var(--orange-light)">🎯</div>
+          <div class="af-text">
+            <strong>Индивидуален подход</strong>
+            <span>Програмата се нагажда към темпото и нуждите на всяко дете</span>
+          </div>
+        </div>
+        <div class="about-feature">
+          <div class="af-icon" style="background:var(--green-light)">😄</div>
+          <div class="af-text">
+            <strong>Забавление е ключово</strong>
+            <span>Тренировките са като игра — децата искат да се върнат!</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROGRAMS -->
+<section id="programs">
+  <div style="text-align:center">
+    <span class="section-label label-orange">Тренировъчни програми</span>
+    <h2>Избери правилната<br>програма за детето ти 🎽</h2>
+    <p class="section-sub" style="margin:0 auto">Всяка програма е специално разработена за съответната възрастова група</p>
+  </div>
+  <div class="programs-grid">
+
+    <div class="program-card blue reveal">
+      <div class="program-icon">🌱</div>
+      <div class="program-level">Начинаещи</div>
+      <h3>Малки Шампиони</h3>
+      <p>Идеална начална точка за деца без опит. Фокус върху основни движения, координация и любов към спорта.</p>
+      <div class="program-ages">👶 5 – 7 години</div>
+      <details class="program-exercises">
+        <summary>Упражнения в програмата</summary>
+        <div class="ex-list">
+          <div class="ex-item"><span class="ex-dot"></span>Скачане на въже (30 сек)</div>
+          <div class="ex-item"><span class="ex-dot"></span>Кацане от скок на две крака</div>
+          <div class="ex-item"><span class="ex-dot"></span>Пъзели с топка — хващане и подаване</div>
+          <div class="ex-item"><span class="ex-dot"></span>Зиг-заг бягане между конуси</div>
+          <div class="ex-item"><span class="ex-dot"></span>Упражнение „Котка-крава" (гъвкавост)</div>
+          <div class="ex-item"><span class="ex-dot"></span>Баланс на един крак (10 сек)</div>
+        </div>
+      </details>
+    </div>
+
+    <div class="program-card orange reveal" style="transition-delay:.1s">
+      <div class="program-icon">🚀</div>
+      <div class="program-level">Средно ниво</div>
+      <h3>Активни Звезди</h3>
+      <p>За деца с малко опит, готови да се изпробват. Развиваме скорост, сила и отборен дух.</p>
+      <div class="program-ages">🧒 8 – 10 години</div>
+      <details class="program-exercises">
+        <summary>Упражнения в програмата</summary>
+        <div class="ex-list">
+          <div class="ex-item"><span class="ex-dot"></span>Берпита (5 повторения)</div>
+          <div class="ex-item"><span class="ex-dot"></span>Страничен скут (lateral shuffle)</div>
+          <div class="ex-item"><span class="ex-dot"></span>Планк (20 секунди)</div>
+          <div class="ex-item"><span class="ex-dot"></span>Скокове на кутия (step-up)</div>
+          <div class="ex-item"><span class="ex-dot"></span>Спринт 15 метра × 4</div>
+          <div class="ex-item"><span class="ex-dot"></span>Клек с тежест (bodyweight squat)</div>
+        </div>
+      </details>
+    </div>
+
+    <div class="program-card green reveal" style="transition-delay:.2s">
+      <div class="program-icon">🏆</div>
+      <div class="program-level">Напреднали</div>
+      <h3>Елитни Спортисти</h3>
+      <p>Интензивна програма за деца с амбиции. Спортна специализация, тактика и ментална сила.</p>
+      <div class="program-ages">🧑 11 – 12 години</div>
+      <details class="program-exercises">
+        <summary>Упражнения в програмата</summary>
+        <div class="ex-list">
+          <div class="ex-item"><span class="ex-dot"></span>HIIT кръг (20 сек работа / 10 сек почивка)</div>
+          <div class="ex-item"><span class="ex-dot"></span>Напад с въртене (lunge with rotation)</div>
+          <div class="ex-item"><span class="ex-dot"></span>Клек + скок (jump squat)</div>
+          <div class="ex-item"><span class="ex-dot"></span>Планк с докосване (plank shoulder tap)</div>
+          <div class="ex-item"><span class="ex-dot"></span>Агилити стълба (ladder drills)</div>
+          <div class="ex-item"><span class="ex-dot"></span>Малки препятствия + спринт</div>
+        </div>
+      </details>
+    </div>
+
+  </div>
+</section>
+
+<!-- BOOKING -->
+<section id="booking">
+
+  <!-- Animated background orbs -->
+  <div class="booking-orb booking-orb-1"></div>
+  <div class="booking-orb booking-orb-2"></div>
+  <div class="booking-orb booking-orb-3"></div>
+
+  <div class="booking-header reveal">
+    <span class="section-label label-green">Резервирай</span>
+    <h2>Запиши тренировъчна сесия 📅</h2>
+  </div>
+  <p class="booking-subtext reveal">
+    Изберете удобен ден и час директно от календара.<br>
+    Ще получите потвърждение по имейл веднага след записването!
+  </p>
+
+  <div class="calendly-outer">
+    <div class="calendly-glow-ring"></div>
+    <div class="calendly-wrap" id="calendlyCard">
+      <div class="calendly-accent-bar"></div>
+      <iframe
+        src="https://calendly.com/btyutyukov7/30min?hide_gdpr_banner=1&primary_color=3b9eff&embed_type=Inline"
+        width="100%"
+        height="1100"
+        frameborder="0"
+        scrolling="no"
+        style="border:none; display:block; border-radius:0 0 24px 24px;"
+      ></iframe>
+    </div>
+  </div>
+
+  <div class="booking-trust">
+    <div class="trust-item">✅ Безплатна първа консултация</div>
+    <div class="trust-item">📧 Потвърждение по имейл</div>
+    <div class="trust-item">🔄 Лесно пренасрочване</div>
+    <div class="trust-item">🛡️ Безопасна среда за деца</div>
+  </div>
+</section>
+
+<!-- NEWS -->
+<section id="news">
+  <div style="text-align:center">
+    <span class="section-label label-purple">Новини</span>
+    <h2>Актуално &amp; Обяви 📢</h2>
+  </div>
+  <div class="news-grid">
+    <div class="news-card reveal">
+      <div class="news-thumb blue">🏕️</div>
+      <div class="news-body">
+        <div class="news-date">10 Юни 2025</div>
+        <h4>Летен спортен лагер!</h4>
+        <p>Регистрацията за нашия летен спортен лагер е отворена. Ограничени места — побързайте!</p>
+      </div>
+    </div>
+    <div class="news-card reveal" style="transition-delay:.1s">
+      <div class="news-thumb orange">🥇</div>
+      <div class="news-body">
+        <div class="news-date">2 Юни 2025</div>
+        <h4>Нашите деца с медали!</h4>
+        <p>3 от нашите малки спортисти спечелиха медали на регионалното първенство. Браво!</p>
+      </div>
+    </div>
+    <div class="news-card reveal" style="transition-delay:.2s">
+      <div class="news-thumb green">📋</div>
+      <div class="news-body">
+        <div class="news-date">25 Май 2025</div>
+        <h4>Нова програма за 5–6г.</h4>
+        <p>Стартираме нова въвеждаща програма специално за децата от 5 и 6 годишна възраст.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <a href="#" class="nav-logo">Kids<span style="color:var(--orange)">Coach</span> 🏃</a>
+      <p>Помагаме на децата да открият любовта към спорта и движението в безопасна, приятна среда.</p>
+      <div class="social-links">
+        <a href="#" class="social-link" title="Facebook">📘</a>
+        <a href="#" class="social-link" title="Instagram">📸</a>
+        <a href="#" class="social-link" title="YouTube">▶️</a>
+        <a href="#" class="social-link" title="TikTok">🎵</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h5>Бързи връзки</h5>
+      <ul>
+        <li><a href="#about">За треньора</a></li>
+        <li><a href="#programs">Програми</a></li>
+        <li><a href="#booking">Резервирай</a></li>
+        <li><a href="#news">Новини</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Контакти</h5>
+      <ul>
+        <li><a href="tel:+359881234567">📞 +359 88 123 4567</a></li>
+        <li><a href="/cdn-cgi/l/email-protection#7c15121a133c1715180f1f131d1f14521e1b">✉️ <span class="__cf_email__" data-cfemail="771e191118371c1e1304141816141f591510">[email&#160;protected]</span></a></li>
+        <li><a href="#">📍 Пловдив, България</a></li>
+        <li><a href="#">⏰ Пон–Съб: 15:00–19:00</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    © 2025 KidsCoach. Всички права запазени. Направено с ❤️ за децата.
+  </div>
+</footer>
+
+
+
+<script>
+  // Scroll reveal
+  const revealEls = document.querySelectorAll('.reveal');
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
+  revealEls.forEach(el => revealObserver.observe(el));
+
+  // Calendly card slide-in on scroll
+  const calendlyCard = document.getElementById('calendlyCard');
+  const cardObserver = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) calendlyCard.classList.add('visible'); });
+  }, { threshold: 0.08 });
+  if (calendlyCard) cardObserver.observe(calendlyCard);
+
+  // Mobile menu
+  function toggleMenu() {
+    document.getElementById('mobileMenu').classList.toggle('open');
+  }
+</script>
