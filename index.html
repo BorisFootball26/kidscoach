@@ -6,6 +6,8 @@
 <title>БТ Шампиони — Борис Тютюков | Детски Футболен Треньор, Пловдив</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Baloo+2:wght@700;800;900&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -397,18 +399,19 @@
   }
   .t-stars { color: var(--gold); font-size: 1.1rem; margin-bottom: 16px; letter-spacing: 2px; }
   .t-text {
-    color: var(--text-muted); font-size: .93rem; line-height: 1.75;
-    margin-bottom: 24px; font-style: italic;
+    color: #333; font-size: 1rem; line-height: 1.75;
+    margin-bottom: 20px; font-style: normal;
   }
   .t-author { display: flex; align-items: center; gap: 12px; }
   .t-avatar {
-    width: 44px; height: 44px; border-radius: 50%;
+    width: 56px; height: 56px; border-radius: 50%;
     background: var(--green-light);
     display: grid; place-items: center; font-size: 1.3rem;
-    flex-shrink: 0;
+    flex-shrink: 0; overflow: hidden;
   }
-  .t-name { font-weight: 800; font-size: .9rem; }
-  .t-role { font-size: .78rem; color: var(--text-muted); }
+  .t-avatar img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; display: block; }
+  .t-name { font-weight: 800; font-size: 1rem; color: #1a1a1a; }
+  .t-role { font-size: .82rem; color: #666; margin-top: 2px; }
 
   /* ── BOOKING ── */
   #booking {
@@ -602,6 +605,8 @@
     .about-grid { grid-template-columns: 1fr; gap: 40px; }
     .about-grid.reverse-mobile .about-story { order: 2; }
     .about-grid.reverse-mobile .about-photo { order: 1; }
+    .about-grid.reverse-mobile .about-story { order: 2; }
+    .about-grid.reverse-mobile .about-photo { order: 1; }
     .gallery-grid { grid-template-columns: 1fr 1fr; }
     .gallery-item.large { grid-column: span 2; }
     .testimonials-grid { grid-template-columns: 1fr 1fr; }
@@ -708,7 +713,7 @@
   <div class="hero-right">
     <!-- Profile card -->
     <div class="hero-profile-card">
-      <div class="hero-avatar" style="overflow:hidden;padding:0;"><img src="image1.jpg" alt="Борис" style="width:100%;height:100%;object-fit:cover;object-position:center top;border-radius:50%;display:block;"></div>
+      <div class="hero-avatar" style="overflow:hidden;padding:0;"><img src="boris.jpg" alt="Борис" style="width:100%;height:100%;object-fit:cover;object-position:center top;border-radius:50%;display:block;"></div>
       <div class="hero-profile-info">
         <strong>Борис Тютюков</strong>
         <span>Детски футболен &amp; кондиционен треньор</span>
@@ -747,7 +752,7 @@
   <div class="about-grid reveal">
 
     <div class="about-photo">
-      <img src="image1.jpg" alt="Борис Тютюков" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;display:block;">
+      <img src="boris.jpg" alt="Борис Тютюков" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;display:block;">
       <div class="about-badge">
         <div class="about-badge-icon">⚽</div>
         <div class="about-badge-text">
@@ -858,7 +863,7 @@
     </div>
 
     <div class="about-photo">
-      <img src="image4.jpg" alt="Христиан Димитров — Треньор ФК Кронос" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;display:block;">
+      <img src="hristo.jpg" alt="Христиан Димитров — Треньор ФК Кронос" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;display:block;">
       <div class="about-badge">
         <div class="about-badge-icon">🏅</div>
         <div class="about-badge-text">
@@ -893,27 +898,27 @@
 
     <!-- Smaller items -->
     <div class="gallery-item reveal" style="transition-delay:.1s;">
-      <img src="image2.jpg" alt="Зала Атрим" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;background:#000;">
+      <img src="hall.jpg" alt="Зала Атрим" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;background:#000;">
       <div class="gallery-overlay"><span>📍 Зала Атрим</span></div>
     </div>
 
     <div class="gallery-item reveal" style="transition-delay:.15s;">
       <video autoplay muted loop playsinline style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;background:#000;">
-        <source src="video5.mp4" type="video/mp4">
+        <source src="video2.mp4" type="video/mp4">
       </video>
       <div class="gallery-overlay"><span>⚽ Тренировка</span></div>
     </div>
 
     <div class="gallery-item reveal" style="transition-delay:.2s;">
       <video autoplay muted loop playsinline style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;background:#000;">
-        <source src="video5.mp4" type="video/mp4">
+        <source src="video3.mp4" type="video/mp4">
       </video>
       <div class="gallery-overlay"><span>👦 Тренировка с деца</span></div>
     </div>
 
     <div class="gallery-item reveal" style="transition-delay:.25s">
       <video autoplay muted loop playsinline style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;">
-        <source src="video5.mp4" type="video/mp4">
+        <source src="video4.mp4" type="video/mp4">
       </video>
       <div class="gallery-overlay"><span>⚽ Тренировка</span></div>
     </div>
@@ -937,58 +942,43 @@
 
   <div class="testimonials-grid">
     <div class="testimonial-card reveal">
-      <div class="t-quote">"</div>
       <div class="t-stars">★★★★★</div>
       <p class="t-text">Децата ще са в сигурни ръце. Успех Бобо!</p>
       <div class="t-author">
-        <div class="t-avatar" style="overflow:hidden;padding:0;">
-          <img src="nikolay.jpg" style="width:100%;height:100%;object-fit:cover;border-radius:50%;" alt="Nikolay">
-        </div>
+        <div class="t-avatar"><img src="nikolay.jpg" alt="Nikolay Kogelov"></div>
         <div>
           <div class="t-name">Nikolay Kogelov</div>
           <div class="t-role">Родител</div>
         </div>
       </div>
     </div>
-
     <div class="testimonial-card reveal" style="transition-delay:.1s">
-      <div class="t-quote">"</div>
       <div class="t-stars">★★★★★</div>
       <p class="t-text">Страхотен пример за младите футболисти, не само като професионалист, но и като човек!</p>
       <div class="t-author">
-        <div class="t-avatar" style="overflow:hidden;padding:0;">
-          <img src="zapryan.jpg" style="width:100%;height:100%;object-fit:cover;border-radius:50%;" alt="Запрян">
-        </div>
+        <div class="t-avatar"><img src="zapryan.jpg" alt="Запрян Запрянов"></div>
         <div>
           <div class="t-name">Запрян Запрянов</div>
           <div class="t-role">Родител</div>
         </div>
       </div>
     </div>
-
     <div class="testimonial-card reveal" style="transition-delay:.2s">
-      <div class="t-quote">"</div>
       <div class="t-stars">★★★★★</div>
       <p class="t-text">Страхотен треньор и човек!</p>
       <div class="t-author">
-        <div class="t-avatar" style="overflow:hidden;padding:0;">
-          <img src="hari.jpg" style="width:100%;height:100%;object-fit:cover;border-radius:50%;" alt="Hari">
-        </div>
+        <div class="t-avatar"><img src="hari.jpg" alt="Hari Hovagimyan"></div>
         <div>
           <div class="t-name">Hari Hovagimyan</div>
           <div class="t-role">Родител</div>
         </div>
       </div>
     </div>
-
     <div class="testimonial-card reveal" style="transition-delay:.3s">
-      <div class="t-quote">"</div>
       <div class="t-stars">★★★★★</div>
       <p class="t-text">Успех, Бобка, дано вземат от твоята скромност извън терена и стараниeто и отдадеността на терена. 🍀</p>
       <div class="t-author">
-        <div class="t-avatar" style="overflow:hidden;padding:0;">
-          <img src="venci.jpg" style="width:100%;height:100%;object-fit:cover;border-radius:50%;" alt="Венцислав">
-        </div>
+        <div class="t-avatar"><img src="venci.jpg" alt="Венцислав Бенгюзов"></div>
         <div>
           <div class="t-name">Венцислав Бенгюзов</div>
           <div class="t-role">Родител</div>
@@ -998,33 +988,50 @@
   </div>
 </section>
 
-<!-- BOOKING<!-- BOOKING<!-- BOOKING -->
+<!-- BOOKING<!-- BOOKING<!-- BOOKING<!-- BOOKING -->
 <section id="booking">
   <div class="booking-orb booking-orb-1"></div>
   <div class="booking-orb booking-orb-2"></div>
 
-  <div class="booking-card reveal">
-    <div class="booking-card-accent"></div>
-    <h3>Пиши ни директно —<br>записваме те веднага! 🚀</h3>
-    <p>Натисни бутона и стартира разговор директно в любимото ти приложение.</p>
+  <div style="position:relative;z-index:1;max-width:680px;margin:0 auto;text-align:center;">
+    <span class="section-label" style="background:rgba(29,185,84,.18);color:#5FE890;">Резервирай</span>
+    <h2 style="color:#fff;margin:14px 0 12px;">Запиши Тренировка 📅</h2>
+    <p style="color:rgba(255,255,255,.65);font-size:1rem;margin-bottom:40px;line-height:1.7;">
+      Свържете се с нас директно — ще отговорим веднага и ще запишем удобен час за вашето дете!
+    </p>
 
-    <div class="booking-app-btns">
-      <a href="viber://chat?number=359898660428" class="booking-app-btn viber">
-        💜 Пиши в Viber
+    <div style="background:rgba(255,255,255,.08);border:1.5px solid rgba(255,255,255,.15);backdrop-filter:blur(20px);border-radius:28px;padding:40px 36px;margin-bottom:32px;">
+      <div style="height:4px;background:linear-gradient(90deg,var(--green),var(--gold));border-radius:4px;margin:-40px -36px 32px;border-radius:28px 28px 0 0;"></div>
+
+      <h3 style="font-family:'Baloo 2',cursive;font-size:1.7rem;font-weight:900;color:#fff;margin-bottom:10px;">
+        Пиши ни директно —<br>записваме те веднага! 🚀
+      </h3>
+      <p style="color:rgba(255,255,255,.6);font-size:.95rem;margin-bottom:28px;">
+        Натисни бутона и стартира разговор директно в любимото ти приложение.
+      </p>
+
+      <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-bottom:24px;">
+        <a href="viber://chat?number=359898660428" style="display:inline-flex;align-items:center;gap:10px;background:linear-gradient(135deg,#7360F2,#9B59B6);color:#fff;border-radius:50px;padding:16px 32px;font-family:'Nunito',sans-serif;font-weight:800;font-size:1rem;text-decoration:none;transition:transform .2s,box-shadow .2s;box-shadow:0 4px 20px rgba(115,96,242,.4);">
+          💜 Пиши във Viber
+        </a>
+        <a href="https://wa.me/359898660428" target="_blank" style="display:inline-flex;align-items:center;gap:10px;background:linear-gradient(135deg,#25D366,#128C7E);color:#fff;border-radius:50px;padding:16px 32px;font-family:'Nunito',sans-serif;font-weight:800;font-size:1rem;text-decoration:none;transition:transform .2s,box-shadow .2s;box-shadow:0 4px 20px rgba(37,211,102,.4);">
+          💬 Пиши в WhatsApp
+        </a>
+      </div>
+
+      <div style="display:flex;align-items:center;gap:12px;color:rgba(255,255,255,.4);font-size:.85rem;margin-bottom:20px;">
+        <span style="flex:1;height:1px;background:rgba(255,255,255,.15);display:block;"></span>
+        или се свържи по
+        <span style="flex:1;height:1px;background:rgba(255,255,255,.15);display:block;"></span>
+      </div>
+
+      <a href="mailto:btyutyukov7@icloud.com" style="display:inline-flex;align-items:center;gap:10px;background:rgba(255,255,255,.1);border:1.5px solid rgba(255,255,255,.2);border-radius:50px;padding:13px 28px;color:rgba(255,255,255,.8);text-decoration:none;font-weight:700;font-size:.95rem;margin-bottom:20px;">
+        ✉️ Изпрати имейл
       </a>
-      <a href="https://wa.me/359898660428" target="_blank" class="booking-app-btn whatsapp">
-        💬 Пиши в WhatsApp
-      </a>
-    </div>
 
-    <div class="booking-divider">или се свържи по</div>
-
-    <a href="mailto:btyutyukov7@icloud.com" class="booking-email-btn">
-      ✉️ Изпрати имейл
-    </a>
-
-    <div class="booking-phone-row">
-      📞 Обади се: <a href="tel:0898660428">0898 660 428</a>
+      <div style="background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:50px;padding:14px 28px;color:rgba(255,255,255,.7);font-size:.92rem;font-weight:600;">
+        📞 Обади се: <a href="tel:0898660428" style="color:var(--green);font-weight:800;font-size:1rem;text-decoration:none;">0898 660 428</a>
+      </div>
     </div>
   </div>
 
@@ -1037,7 +1044,7 @@
   </div>
 </section>
 
-<!-- FOOTER -->
+<!-- FOOTER<!-- FOOTER -->
 <footer>
   <div class="footer-grid">
     <div class="footer-brand">
