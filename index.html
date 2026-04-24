@@ -4,6 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>БТ Шампиони — Борис Тютюков | Детски Футболен Треньор, Пловдив</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Baloo+2:wght@700;800;900&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -26,10 +28,15 @@
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html { scroll-behavior: smooth; }
   body {
-    font-family: 'Nunito', sans-serif;
+    font-family: 'Nunito', sans-serif !important;
     background: var(--bg);
     color: var(--text);
     overflow-x: hidden;
+    -webkit-text-size-adjust: 100%;
+  }
+  * { font-family: 'Nunito', sans-serif; }
+  h1, h2, h3, h4, h5, .nav-logo, .stat-num, .disp-font {
+    font-family: 'Baloo 2', cursive !important;
   }
 
   /* ── NAV ── */
@@ -376,7 +383,7 @@
   /* ── TESTIMONIALS ── */
   #testimonials { background: #fff; }
   .testimonials-header { text-align: center; margin-bottom: 48px; }
-  .testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .testimonials-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
   .testimonial-card {
     background: var(--bg); border-radius: var(--radius);
     padding: 32px 28px; position: relative;
@@ -440,31 +447,103 @@
     font-size: 1.05rem; line-height: 1.75;
     max-width: 520px; margin: 0 auto 52px;
     position: relative; z-index: 1;
+  } 100%{filter:hue-rotate(360deg) blur(4px)} }
+
+
+  @media (max-width: 640px) {
+    .booking-contact { flex-direction: column; align-items: center; }
+    .contact-btn { width: 100%; max-width: 300px; }
   }
 
-  .calendly-outer { position: relative; z-index: 1; max-width: 960px; margin: 0 auto; }
-  .calendly-glow-ring {
-    position: absolute; inset: -3px; border-radius: calc(var(--radius) + 3px);
-    background: linear-gradient(135deg, rgba(29,185,84,.6), rgba(245,184,0,.4), rgba(29,185,84,.3));
-    z-index: 0;
-    animation: ringRotate 6s linear infinite;
-  }
-  @keyframes ringRotate { 0%{filter:hue-rotate(0deg) blur(4px)} 100%{filter:hue-rotate(360deg) blur(4px)} }
-  .calendly-wrap {
+  /* Booking card */
+  .booking-card {
     position: relative; z-index: 1;
-    background: #fff; border-radius: var(--radius);
-    box-shadow: 0 32px 80px rgba(0,0,0,.45);
-    overflow: visible;
-    opacity: 0; transform: translateY(40px);
-    transition: opacity .8s ease, transform .8s ease;
+    background: rgba(255,255,255,.07);
+    border: 1.5px solid rgba(255,255,255,.15);
+    backdrop-filter: blur(20px);
+    border-radius: 28px;
+    max-width: 680px; margin: 0 auto 40px;
+    padding: 48px 40px 40px;
+    text-align: center;
   }
-  .calendly-wrap.visible { opacity: 1; transform: translateY(0); }
-  .calendly-accent-bar {
+  .booking-card-accent {
     height: 4px;
-    background: linear-gradient(90deg, var(--green), var(--gold), var(--green));
-    border-radius: var(--radius) var(--radius) 0 0;
+    background: linear-gradient(90deg, var(--green), var(--gold));
+    border-radius: 28px 28px 0 0;
+    margin: -48px -40px 36px;
   }
-
+  .booking-card h3 {
+    font-family: 'Baloo 2', cursive;
+    font-size: clamp(1.6rem, 4vw, 2rem);
+    font-weight: 900; color: #fff;
+    margin-bottom: 12px; line-height: 1.2;
+  }
+  .booking-card p {
+    color: rgba(255,255,255,.65);
+    font-size: .98rem; margin-bottom: 32px; line-height: 1.6;
+  }
+  .booking-app-btns {
+    display: flex; gap: 14px; justify-content: center;
+    flex-wrap: wrap; margin-bottom: 28px;
+  }
+  .booking-app-btn {
+    display: flex; align-items: center; gap: 10px;
+    border: none; border-radius: 50px;
+    padding: 16px 32px; font-family: 'Nunito', sans-serif;
+    font-weight: 800; font-size: 1rem; cursor: pointer;
+    text-decoration: none; transition: transform .2s, box-shadow .2s;
+    min-width: 190px; justify-content: center;
+  }
+  .booking-app-btn:hover { transform: translateY(-3px); }
+  .booking-app-btn.viber {
+    background: linear-gradient(135deg, #7360F2, #9B59B6);
+    color: #fff;
+    box-shadow: 0 4px 20px rgba(115,96,242,.4);
+  }
+  .booking-app-btn.viber:hover { box-shadow: 0 8px 32px rgba(115,96,242,.6); }
+  .booking-app-btn.whatsapp {
+    background: linear-gradient(135deg, #25D366, #128C7E);
+    color: #fff;
+    box-shadow: 0 4px 20px rgba(37,211,102,.4);
+  }
+  .booking-app-btn.whatsapp:hover { box-shadow: 0 8px 32px rgba(37,211,102,.6); }
+  .booking-divider {
+    display: flex; align-items: center; gap: 12px;
+    color: rgba(255,255,255,.4); font-size: .85rem;
+    margin-bottom: 20px;
+  }
+  .booking-divider::before, .booking-divider::after {
+    content: ''; flex: 1;
+    height: 1px; background: rgba(255,255,255,.15);
+  }
+  .booking-email-btn {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: rgba(255,255,255,.1);
+    border: 1.5px solid rgba(255,255,255,.2);
+    border-radius: 50px; padding: 13px 28px;
+    color: rgba(255,255,255,.8); text-decoration: none;
+    font-weight: 700; font-size: .95rem;
+    transition: background .2s, transform .2s;
+    margin-bottom: 28px;
+  }
+  .booking-email-btn:hover { background: rgba(255,255,255,.18); transform: translateY(-2px); }
+  .booking-phone-row {
+    display: flex; align-items: center; justify-content: center; gap: 10px;
+    background: rgba(255,255,255,.06);
+    border: 1px solid rgba(255,255,255,.1);
+    border-radius: 50px; padding: 14px 28px;
+    color: rgba(255,255,255,.7); font-size: .92rem; font-weight: 600;
+  }
+  .booking-phone-row a {
+    color: var(--green); font-weight: 800; font-size: 1rem;
+    text-decoration: none;
+  }
+  @media (max-width: 640px) {
+    .booking-card { padding: 40px 24px 32px; }
+    .booking-card-accent { margin: -40px -24px 28px; }
+    .booking-app-btns { flex-direction: column; align-items: center; }
+    .booking-app-btn { width: 100%; max-width: 280px; }
+  }
   .booking-trust {
     display: flex; justify-content: center; gap: 14px;
     flex-wrap: wrap; margin-top: 36px;
@@ -521,6 +600,8 @@
   }
   @media (max-width: 900px) {
     .about-grid { grid-template-columns: 1fr; gap: 40px; }
+    .about-grid.reverse-mobile .about-story { order: 2; }
+    .about-grid.reverse-mobile .about-photo { order: 1; }
     .gallery-grid { grid-template-columns: 1fr 1fr; }
     .gallery-item.large { grid-column: span 2; }
     .testimonials-grid { grid-template-columns: 1fr 1fr; }
@@ -728,9 +809,9 @@
 
 
   <!-- ВТОРИ ТРЕНЬОР -->
-  <div class="about-grid reveal" style="margin-top: 80px; padding-top: 60px; border-top: 2px solid var(--green-light);">
+  <div class="about-grid reverse-mobile reveal" style="margin-top: 80px; padding-top: 60px; border-top: 2px solid var(--green-light);">
 
-    <div>
+    <div class="about-story">
       <span class="section-label label-green">Нашият Екип</span>
       <h2>Христиан Димитров 🏅</h2>
 
@@ -777,7 +858,7 @@
     </div>
 
     <div class="about-photo">
-      <img src="image3.jpg" alt="Христиан Димитров — Треньор ФК Кронос" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;display:block;">
+      <img src="image4.jpg" alt="Христиан Димитров — Треньор ФК Кронос" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;display:block;">
       <div class="about-badge">
         <div class="about-badge-icon">🏅</div>
         <div class="about-badge-text">
@@ -818,21 +899,21 @@
 
     <div class="gallery-item reveal" style="transition-delay:.15s;">
       <video autoplay muted loop playsinline style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;background:#000;">
-        <source src="video2.mp4" type="video/mp4">
+        <source src="video5.mp4" type="video/mp4">
       </video>
       <div class="gallery-overlay"><span>⚽ Тренировка</span></div>
     </div>
 
     <div class="gallery-item reveal" style="transition-delay:.2s;">
       <video autoplay muted loop playsinline style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;background:#000;">
-        <source src="video3.mp4" type="video/mp4">
+        <source src="video5.mp4" type="video/mp4">
       </video>
       <div class="gallery-overlay"><span>👦 Тренировка с деца</span></div>
     </div>
 
     <div class="gallery-item reveal" style="transition-delay:.25s">
       <video autoplay muted loop playsinline style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;">
-        <source src="video4.mp4" type="video/mp4">
+        <source src="video5.mp4" type="video/mp4">
       </video>
       <div class="gallery-overlay"><span>⚽ Тренировка</span></div>
     </div>
@@ -858,15 +939,14 @@
     <div class="testimonial-card reveal">
       <div class="t-quote">"</div>
       <div class="t-stars">★★★★★</div>
-      <p class="t-text">
-        Синът ми беше много срамежлив и не обичаше спорта. След месец тренировки
-        при Борис буквално броях дните до следващата тренировка. Промяната е невероятна!
-      </p>
+      <p class="t-text">Децата ще са в сигурни ръце. Успех Бобо!</p>
       <div class="t-author">
-        <div class="t-avatar">👩</div>
+        <div class="t-avatar" style="overflow:hidden;padding:0;">
+          <img src="nikolay.jpg" style="width:100%;height:100%;object-fit:cover;border-radius:50%;" alt="Nikolay">
+        </div>
         <div>
-          <div class="t-name">Давид, 7г.</div>
-          <div class="t-role">Родител от ФК Кронос</div>
+          <div class="t-name">Nikolay Kogelov</div>
+          <div class="t-role">Родител</div>
         </div>
       </div>
     </div>
@@ -874,15 +954,14 @@
     <div class="testimonial-card reveal" style="transition-delay:.1s">
       <div class="t-quote">"</div>
       <div class="t-stars">★★★★★</div>
-      <p class="t-text">
-        Борис има невероятен начин с децата — търпелив, позитивен, но и взискателен.
-        Дъщеря ми стана много по-уверена и физически по-силна само за няколко месеца.
-      </p>
+      <p class="t-text">Страхотен пример за младите футболисти, не само като професионалист, но и като човек!</p>
       <div class="t-author">
-        <div class="t-avatar">👨</div>
+        <div class="t-avatar" style="overflow:hidden;padding:0;">
+          <img src="zapryan.jpg" style="width:100%;height:100%;object-fit:cover;border-radius:50%;" alt="Запрян">
+        </div>
         <div>
-          <div class="t-name">Ния, 9г.</div>
-          <div class="t-role">Редовен клиент</div>
+          <div class="t-name">Запрян Запрянов</div>
+          <div class="t-role">Родител</div>
         </div>
       </div>
     </div>
@@ -890,53 +969,68 @@
     <div class="testimonial-card reveal" style="transition-delay:.2s">
       <div class="t-quote">"</div>
       <div class="t-stars">★★★★★</div>
-      <p class="t-text">
-        Препоръчвам на всеки родител! Тренировките са забавни, безопасни и много
-        ефективни. Детето ми вече иска да стане футболист. Благодарим, Борис!
-      </p>
+      <p class="t-text">Страхотен треньор и човек!</p>
       <div class="t-author">
-        <div class="t-avatar">👩</div>
+        <div class="t-avatar" style="overflow:hidden;padding:0;">
+          <img src="hari.jpg" style="width:100%;height:100%;object-fit:cover;border-radius:50%;" alt="Hari">
+        </div>
         <div>
-          <div class="t-name">Мартин, 10г.</div>
-          <div class="t-role">Редовен клиент</div>
+          <div class="t-name">Hari Hovagimyan</div>
+          <div class="t-role">Родител</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="testimonial-card reveal" style="transition-delay:.3s">
+      <div class="t-quote">"</div>
+      <div class="t-stars">★★★★★</div>
+      <p class="t-text">Успех, Бобка, дано вземат от твоята скромност извън терена и стараниeто и отдадеността на терена. 🍀</p>
+      <div class="t-author">
+        <div class="t-avatar" style="overflow:hidden;padding:0;">
+          <img src="venci.jpg" style="width:100%;height:100%;object-fit:cover;border-radius:50%;" alt="Венцислав">
+        </div>
+        <div>
+          <div class="t-name">Венцислав Бенгюзов</div>
+          <div class="t-role">Родител</div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- BOOKING -->
+<!-- BOOKING<!-- BOOKING<!-- BOOKING -->
 <section id="booking">
   <div class="booking-orb booking-orb-1"></div>
   <div class="booking-orb booking-orb-2"></div>
 
-  <div class="booking-header reveal">
-    <span class="section-label">Резервирай</span>
-    <h2>Запиши Тренировка 📅</h2>
-  </div>
-  <p class="booking-subtext reveal">
-    Изберете удобен ден и час директно от календара.<br>
-    Ще получите потвърждение по имейл веднага след записването!
-  </p>
+  <div class="booking-card reveal">
+    <div class="booking-card-accent"></div>
+    <h3>Пиши ни директно —<br>записваме те веднага! 🚀</h3>
+    <p>Натисни бутона и стартира разговор директно в любимото ти приложение.</p>
 
-  <div class="calendly-outer">
-    <div class="calendly-glow-ring"></div>
-    <div class="calendly-wrap" id="calendlyCard">
-      <div class="calendly-accent-bar"></div>
-      <iframe
-        src="https://calendly.com/btyutyukov7/30min?hide_gdpr_banner=1&primary_color=1db954&embed_type=Inline"
-        width="100%"
-        height="1100"
-        frameborder="0"
-        scrolling="no"
-        style="border:none; display:block; border-radius:0 0 24px 24px;"
-      ></iframe>
+    <div class="booking-app-btns">
+      <a href="viber://chat?number=359898660428" class="booking-app-btn viber">
+        💜 Пиши в Viber
+      </a>
+      <a href="https://wa.me/359898660428" target="_blank" class="booking-app-btn whatsapp">
+        💬 Пиши в WhatsApp
+      </a>
+    </div>
+
+    <div class="booking-divider">или се свържи по</div>
+
+    <a href="mailto:btyutyukov7@icloud.com" class="booking-email-btn">
+      ✉️ Изпрати имейл
+    </a>
+
+    <div class="booking-phone-row">
+      📞 Обади се: <a href="tel:0898660428">0898 660 428</a>
     </div>
   </div>
 
   <div class="booking-trust">
     <div class="trust-item">✅ Безплатна първа консултация</div>
-    <div class="trust-item">📧 Потвърждение по имейл</div>
+    <div class="trust-item">⚡ Бърз отговор</div>
     <div class="trust-item">🔄 Лесно пренасрочване</div>
     <div class="trust-item">🛡️ Безопасна среда за деца</div>
     <div class="trust-item">📍 Зала Атрим, Пловдив</div>
@@ -986,18 +1080,13 @@
   }, { threshold: 0.08 });
   revealEls.forEach(el => revealObserver.observe(el));
 
-  // Calendly slide-in
-  const calendlyCard = document.getElementById('calendlyCard');
-  const cardObserver = new IntersectionObserver((entries) => {
-    entries.forEach(e => { if (e.isIntersecting) calendlyCard.classList.add('visible'); });
-  }, { threshold: 0.08 });
-  if (calendlyCard) cardObserver.observe(calendlyCard);
+  
   function toggleMenu() {
     document.getElementById('mobileMenu').classList.toggle('open');
   }
 </script>ist.add('visible'); });
   }, { threshold: 0.08 });
-  if (calendlyCard) cardObserver.observe(calendlyCard);
+
 
   function toggleMenu() {
     document.getElementById('mobileMenu').classList.toggle('open');
