@@ -1,0 +1,1269 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>БТ Шампиони — Борис Тютюков | Детски Футболен Треньор, Пловдив</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Baloo+2:wght@700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --green: #1DB954;
+    --green-dark: #148A3D;
+    --green-light: #D4F7E2;
+    --gold: #F5B800;
+    --gold-light: #FFF6CC;
+    --white: #FFFFFF;
+    --bg: #F8FAF8;
+    --text: #0F1F0F;
+    --text-muted: #5A7060;
+    --card-bg: #FFFFFF;
+    --radius: 24px;
+    --radius-sm: 14px;
+    --shadow: 0 8px 32px rgba(0,0,0,0.07);
+    --shadow-hover: 0 20px 56px rgba(0,0,0,0.13);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Nunito', sans-serif !important;
+    background: var(--bg);
+    color: var(--text);
+    overflow-x: hidden;
+    -webkit-text-size-adjust: 100%;
+  }
+  * { font-family: 'Nunito', sans-serif; }
+  h1, h2, h3, h4, h5, .nav-logo, .stat-num, .disp-font {
+    font-family: 'Baloo 2', cursive !important;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 14px 6vw;
+    background: rgba(248,250,248,0.92);
+    backdrop-filter: blur(14px);
+    border-bottom: 2px solid rgba(29,185,84,0.12);
+  }
+  .nav-logo {
+    font-family: 'Baloo 2', cursive;
+    font-size: 1.55rem; font-weight: 900;
+    color: var(--text);
+    text-decoration: none;
+    display: flex; align-items: center; gap: 10px;
+    letter-spacing: -0.5px;
+  }
+  .nav-logo .bt { color: var(--green); }
+  .nav-logo .shield {
+    width: 34px; height: 34px;
+    background: var(--green);
+    clip-path: polygon(50% 0%, 100% 20%, 100% 70%, 50% 100%, 0% 70%, 0% 20%);
+    display: grid; place-items: center;
+    font-size: .85rem;
+  }
+  .nav-links { display: flex; gap: 30px; list-style: none; }
+  .nav-links a {
+    text-decoration: none; font-weight: 700; font-size: .93rem;
+    color: var(--text-muted); transition: color .2s;
+  }
+  .nav-links a:hover { color: var(--green); }
+  .nav-cta {
+    background: var(--green); color: #fff;
+    border: none; border-radius: 50px; padding: 10px 22px;
+    font-family: 'Nunito', sans-serif; font-weight: 800; font-size: .93rem;
+    cursor: pointer; transition: transform .2s, box-shadow .2s;
+    text-decoration: none;
+  }
+  .nav-cta:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(29,185,84,.4); }
+
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+  .hamburger span { width: 26px; height: 3px; background: var(--text); border-radius: 4px; }
+
+  /* ── HERO ── */
+  #hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 48px;
+    padding: 120px 6vw 80px;
+    position: relative; overflow: hidden;
+    background: linear-gradient(145deg, #071407 0%, #0f2d18 40%, #071407 100%);
+  }
+
+  /* Subtle field texture */
+  #hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(255,255,255,.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,.05) 1px, transparent 1px);
+    background-size: 55px 55px;
+    pointer-events: none; z-index: 0;
+  }
+  /* Extra shine overlay */
+  #hero::after {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 70% 40%, rgba(255,255,255,.12) 0%, transparent 60%);
+    pointer-events: none; z-index: 0;
+  }
+
+  /* Glow orbs */
+  .hero-orb {
+    position: absolute; border-radius: 50%; pointer-events: none;
+    filter: blur(80px); animation: orbFloat 9s ease-in-out infinite;
+  }
+  .hero-orb-1 { width: 500px; height: 500px; background: rgba(255,255,255,.08); top: -150px; right: 0; animation-delay: 0s; }
+  .hero-orb-2 { width: 350px; height: 350px; background: rgba(245,184,0,.15); bottom: -80px; left: 10%; animation-delay: 4s; }
+  @keyframes orbFloat { 0%,100%{transform:translateY(0) scale(1)} 50%{transform:translateY(-35px) scale(1.04)} }
+
+  .hero-content { position: relative; z-index: 1; max-width: 580px; }
+
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: rgba(255,255,255,.18);
+    border: 1.5px solid rgba(255,255,255,.35);
+    backdrop-filter: blur(8px);
+    border-radius: 50px; padding: 7px 20px;
+    font-weight: 800; font-size: .83rem; color: #fff;
+    margin-bottom: 28px;
+    animation: fadeUp .6s ease both;
+    letter-spacing: .04em; text-transform: uppercase;
+  }
+  .hero-badge .live-dot {
+    width: 8px; height: 8px; background: var(--gold); border-radius: 50%;
+    animation: pulse 1.5s infinite;
+  }
+  @keyframes pulse { 0%,100%{transform:scale(1);opacity:1} 50%{transform:scale(1.5);opacity:.6} }
+
+  h1 {
+    font-family: 'Baloo 2', cursive;
+    font-size: clamp(2.6rem, 6.5vw, 4.4rem);
+    font-weight: 900; line-height: 1.1;
+    color: #fff;
+    margin-bottom: 22px;
+    animation: fadeUp .6s .1s ease both;
+  }
+  h1 .green { color: var(--green); }
+  h1 .gold { color: var(--gold); }
+
+  .hero-sub {
+    font-size: 1.12rem; color: rgba(255,255,255,.65);
+    line-height: 1.75; margin-bottom: 38px;
+    animation: fadeUp .6s .2s ease both;
+    max-width: 540px;
+  }
+
+  .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; animation: fadeUp .6s .3s ease both; }
+  .btn-primary {
+    background: var(--green); color: #fff;
+    border: none; border-radius: 50px; padding: 16px 34px;
+    font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 1rem;
+    cursor: pointer; transition: transform .2s, box-shadow .2s;
+    text-decoration: none; display: inline-block;
+  }
+  .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 14px 36px rgba(29,185,84,.45); }
+  .btn-secondary {
+    background: rgba(255,255,255,.08); color: rgba(255,255,255,.85);
+    border: 1.5px solid rgba(255,255,255,.2); border-radius: 50px; padding: 14px 30px;
+    font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 1rem;
+    cursor: pointer; transition: all .2s; text-decoration: none; display: inline-block;
+  }
+  .btn-secondary:hover { background: rgba(255,255,255,.15); border-color: rgba(255,255,255,.4); }
+
+  .hero-stats {
+    display: flex; gap: 36px; margin-top: 52px;
+    animation: fadeUp .6s .4s ease both;
+  }
+  .stat { }
+  .stat-num {
+    font-family: 'Baloo 2', cursive;
+    font-size: 2.2rem; font-weight: 900; color: var(--green);
+    line-height: 1;
+  }
+  .stat-label { font-size: .78rem; color: rgba(255,255,255,.7); font-weight: 700; text-transform: uppercase; letter-spacing: .06em; margin-top: 4px; }
+
+  /* ── HERO RIGHT SIDE CARD ── */
+  .hero-right {
+    position: relative; z-index: 1;
+    display: flex; flex-direction: column; gap: 16px;
+    animation: fadeUp .8s .3s ease both;
+  }
+  .hero-profile-card {
+    background: rgba(255,255,255,.15);
+    border: 1.5px solid rgba(255,255,255,.3);
+    backdrop-filter: blur(20px);
+    border-radius: 24px;
+    padding: 28px;
+    display: flex; align-items: center; gap: 18px;
+    box-shadow: 0 8px 40px rgba(0,0,0,.15);
+  }
+  .hero-avatar {
+    width: 72px; height: 72px; border-radius: 50%;
+    background: rgba(255,255,255,.2);
+    border: 3px solid rgba(255,255,255,.5);
+    display: grid; place-items: center; font-size: 2rem;
+    flex-shrink: 0;
+  }
+  .hero-profile-info strong {
+    display: block; font-size: 1.05rem; font-weight: 900; color: #fff;
+  }
+  .hero-profile-info span {
+    font-size: .83rem; color: rgba(255,255,255,.7); line-height: 1.5; display: block; margin-top: 3px;
+  }
+  .hero-profile-badge {
+    margin-top: 10px; display: inline-flex; align-items: center; gap: 6px;
+    background: var(--gold); color: #4a3200;
+    border-radius: 50px; padding: 4px 12px; font-size: .75rem; font-weight: 800;
+  }
+
+  .hero-mini-cards {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 12px;
+  }
+  .hero-mini-card {
+    background: rgba(255,255,255,.12);
+    border: 1px solid rgba(255,255,255,.22);
+    backdrop-filter: blur(16px);
+    border-radius: 18px; padding: 20px 18px;
+    transition: background .2s, transform .2s;
+    animation: floatCard 6s ease-in-out infinite;
+  }
+  .hero-mini-card:nth-child(2) { animation-delay: 1.5s; }
+  .hero-mini-card:nth-child(3) { animation-delay: 3s; }
+  .hero-mini-card:nth-child(4) { animation-delay: 4.5s; }
+  .hero-mini-card:hover { background: rgba(255,255,255,.2); transform: translateY(-4px); }
+  @keyframes floatCard { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-6px)} }
+  .hmc-icon { font-size: 1.7rem; margin-bottom: 10px; }
+  .hmc-title { font-weight: 800; font-size: .88rem; color: #fff; margin-bottom: 4px; }
+  .hmc-sub { font-size: .76rem; color: rgba(255,255,255,.65); line-height: 1.4; }
+
+  @keyframes fadeUp { from{opacity:0;transform:translateY(28px)} to{opacity:1;transform:translateY(0)} }
+
+  /* ── SECTIONS COMMON ── */
+  section { padding: 90px 6vw; }
+  .section-label {
+    display: inline-block;
+    font-weight: 800; font-size: .78rem; letter-spacing: .1em; text-transform: uppercase;
+    padding: 6px 16px; border-radius: 50px; margin-bottom: 14px;
+  }
+  .label-green { background: var(--green-light); color: var(--green-dark); }
+  .label-gold { background: var(--gold-light); color: #8B6600; }
+
+  h2 {
+    font-family: 'Baloo 2', cursive;
+    font-size: clamp(1.9rem, 4vw, 2.9rem);
+    font-weight: 900; line-height: 1.15; margin-bottom: 16px;
+  }
+  .section-sub { font-size: 1.05rem; color: var(--text-muted); max-width: 520px; line-height: 1.7; }
+
+  /* ── ABOUT ── */
+  #about { background: #fff; }
+  .about-grid {
+    display: grid; grid-template-columns: 1fr 1.2fr; gap: 72px;
+    align-items: start; margin-top: 52px;
+  }
+
+  /* Photo placeholder */
+  .about-photo {
+    position: relative; border-radius: var(--radius);
+    background: linear-gradient(145deg, #0f2d18, #1a4a28);
+    aspect-ratio: 4/5;
+    display: flex; align-items: center; justify-content: center;
+    overflow: hidden;
+  }
+  .about-photo-placeholder {
+    display: flex; flex-direction: column; align-items: center; gap: 12px;
+    color: rgba(255,255,255,.35); text-align: center; padding: 20px;
+  }
+  .about-photo-placeholder .icon { font-size: 4rem; }
+  .about-photo-placeholder p { font-size: .85rem; font-weight: 700; line-height: 1.5; }
+
+  .about-badge {
+    position: absolute; bottom: 24px; left: 24px; right: 24px;
+    background: rgba(255,255,255,.95);
+    border-radius: var(--radius-sm); padding: 16px 20px;
+    box-shadow: 0 8px 32px rgba(0,0,0,.15);
+    display: flex; align-items: center; gap: 14px;
+    backdrop-filter: blur(10px);
+  }
+  .about-badge-icon { font-size: 2rem; }
+  .about-badge-text strong { display: block; font-weight: 800; font-size: .95rem; color: var(--text); }
+  .about-badge-text span { font-size: .78rem; color: var(--text-muted); }
+
+  /* Story */
+  .about-story p {
+    color: var(--text-muted); font-size: .97rem; line-height: 1.8;
+    margin-bottom: 16px;
+  }
+  .about-story p:last-of-type { margin-bottom: 0; }
+
+  .story-highlight {
+    background: var(--green-light);
+    border-left: 4px solid var(--green);
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+    padding: 16px 20px; margin: 24px 0;
+    font-weight: 700; font-size: .95rem; color: var(--green-dark);
+    line-height: 1.6;
+  }
+
+  .about-features { display: flex; flex-direction: column; gap: 14px; margin-top: 28px; }
+  .about-feature {
+    display: flex; align-items: center; gap: 14px;
+    background: var(--bg); border-radius: var(--radius-sm);
+    padding: 16px 20px;
+    transition: transform .2s, box-shadow .2s;
+  }
+  .about-feature:hover { transform: translateX(5px); box-shadow: var(--shadow); }
+  .af-icon {
+    width: 42px; height: 42px; border-radius: 12px;
+    display: grid; place-items: center; font-size: 1.2rem; flex-shrink: 0;
+  }
+  .af-text strong { display: block; font-weight: 800; margin-bottom: 2px; font-size: .92rem; }
+  .af-text span { font-size: .83rem; color: var(--text-muted); }
+
+  /* ── GALLERY ── */
+  #gallery { background: var(--bg); }
+  .gallery-header { text-align: center; margin-bottom: 48px; }
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-top: 48px;
+  }
+    .gallery-item {
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+    background: linear-gradient(135deg, #0f2d18, #062180);
+    transition: transform .3s, box-shadow .3s;
+    aspect-ratio: 4/3;
+  }
+  .gallery-item:hover { transform: scale(1.02); box-shadow: var(--shadow-hover); }
+    .gallery-item.large {
+    grid-column: span 2;
+    aspect-ratio: 16/10;
+  }
+    .gallery-placeholder {
+    position: absolute; inset: 0;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .gallery-item.large .gallery-placeholder { padding-top: 62%; }
+  .gallery-placeholder-inner {
+    position: absolute; inset: 0;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    gap: 10px; color: rgba(255,255,255,.3); text-align: center; padding: 20px;
+  }
+  .gallery-placeholder-inner .gp-icon { font-size: 2.4rem; }
+  .gallery-placeholder-inner p { font-size: .82rem; font-weight: 700; line-height: 1.4; }
+  .gallery-overlay {
+    position: absolute; inset: 0; z-index: 2;
+    background: linear-gradient(to top, rgba(0,0,0,.55) 0%, transparent 60%);
+    opacity: 0; transition: opacity .3s;
+    display: flex; align-items: flex-end; padding: 20px;
+  }
+  .gallery-item:hover .gallery-overlay { opacity: 1; }
+  .gallery-overlay span {
+    color: #fff; font-weight: 800; font-size: .88rem;
+    background: rgba(29,185,84,.9); padding: 6px 14px; border-radius: 50px;
+  }
+
+  .gallery-note {
+    text-align: center; margin-top: 24px;
+    color: var(--text-muted); font-size: .88rem; font-weight: 600;
+  }
+  .gallery-note a { color: var(--green); text-decoration: none; font-weight: 800; }
+  .gallery-note a:hover { text-decoration: underline; }
+
+  /* ── TESTIMONIALS ── */
+  #testimonials { background: #fff; }
+  .testimonials-header { text-align: center; margin-bottom: 48px; }
+  .testimonials-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+  .testimonial-card {
+    background: var(--bg); border-radius: var(--radius);
+    padding: 32px 28px; position: relative;
+    transition: transform .3s, box-shadow .3s;
+    border: 1.5px solid transparent;
+  }
+  .testimonial-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-hover); border-color: var(--green-light); }
+  .t-quote {
+    font-size: 3rem; line-height: 1; color: var(--green);
+    font-family: 'Baloo 2', cursive; margin-bottom: 8px;
+  }
+  .t-stars { color: var(--gold); font-size: 1.1rem; margin-bottom: 16px; letter-spacing: 2px; }
+  .t-text {
+    color: #333; font-size: 1rem; line-height: 1.75;
+    margin-bottom: 20px; font-style: normal;
+  }
+  .t-author { display: flex; align-items: center; gap: 12px; }
+  .t-avatar {
+    width: 56px; height: 56px; border-radius: 50%;
+    background: var(--green-light);
+    display: grid; place-items: center; font-size: 1.3rem;
+    flex-shrink: 0; overflow: hidden;
+  }
+  .t-avatar img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; display: block; }
+  .t-name { font-weight: 800; font-size: 1rem; color: #1a1a1a; }
+  .t-role { font-size: .82rem; color: #666; margin-top: 2px; }
+
+  /* ── BOOKING ── */
+  #booking {
+    background: linear-gradient(160deg, #071407 0%, #0d2610 45%, #071407 100%);
+    position: relative; overflow: hidden;
+    padding: 100px 6vw 110px;
+  }
+  #booking::before {
+    content: '';
+    position: absolute; inset: 0;
+    background-image: radial-gradient(rgba(29,185,84,.08) 1px, transparent 1px);
+    background-size: 36px 36px;
+    pointer-events: none; z-index: 0;
+  }
+  .booking-orb {
+    position: absolute; border-radius: 50%; pointer-events: none;
+    filter: blur(80px); opacity: .2;
+    animation: orbDrift 12s ease-in-out infinite;
+  }
+  .booking-orb-1 { width: 500px; height: 500px; background: var(--green); top: -160px; left: -120px; animation-delay: 0s; }
+  .booking-orb-2 { width: 380px; height: 380px; background: var(--gold); bottom: -100px; right: -80px; animation-delay: 4s; }
+  @keyframes orbDrift {
+    0%,100%{transform:translate(0,0) scale(1)} 33%{transform:translate(30px,-40px) scale(1.06)} 66%{transform:translate(-20px,30px) scale(.95)}
+  }
+  .booking-header {
+    text-align: center; margin-bottom: 14px;
+    position: relative; z-index: 1;
+  }
+  .booking-header .section-label {
+    background: rgba(29,185,84,.18); color: #5FE890;
+    border: 1px solid rgba(29,185,84,.3);
+  }
+  .booking-header h2 { color: #fff; text-shadow: 0 2px 24px rgba(29,185,84,.2); }
+  .booking-subtext {
+    text-align: center; color: rgba(255,255,255,.6);
+    font-size: 1.05rem; line-height: 1.75;
+    max-width: 520px; margin: 0 auto 52px;
+    position: relative; z-index: 1;
+  } 100%{filter:hue-rotate(360deg) blur(4px)} }
+
+
+  @media (max-width: 640px) {
+    .booking-contact { flex-direction: column; align-items: center; }
+    .contact-btn { width: 100%; max-width: 300px; }
+  }
+
+  /* Booking card */
+  .booking-card {
+    position: relative; z-index: 1;
+    background: rgba(255,255,255,.07);
+    border: 1.5px solid rgba(255,255,255,.15);
+    backdrop-filter: blur(20px);
+    border-radius: 28px;
+    max-width: 680px; margin: 0 auto 40px;
+    padding: 48px 40px 40px;
+    text-align: center;
+  }
+  .booking-card-accent {
+    height: 4px;
+    background: linear-gradient(90deg, var(--green), var(--gold));
+    border-radius: 28px 28px 0 0;
+    margin: -48px -40px 36px;
+  }
+  .booking-card h3 {
+    font-family: 'Baloo 2', cursive;
+    font-size: clamp(1.6rem, 4vw, 2rem);
+    font-weight: 900; color: #fff;
+    margin-bottom: 12px; line-height: 1.2;
+  }
+  .booking-card p {
+    color: rgba(255,255,255,.65);
+    font-size: .98rem; margin-bottom: 32px; line-height: 1.6;
+  }
+  .booking-app-btns {
+    display: flex; gap: 14px; justify-content: center;
+    flex-wrap: wrap; margin-bottom: 28px;
+  }
+  .booking-app-btn {
+    display: flex; align-items: center; gap: 10px;
+    border: none; border-radius: 50px;
+    padding: 16px 32px; font-family: 'Nunito', sans-serif;
+    font-weight: 800; font-size: 1rem; cursor: pointer;
+    text-decoration: none; transition: transform .2s, box-shadow .2s;
+    min-width: 190px; justify-content: center;
+  }
+  .booking-app-btn:hover { transform: translateY(-3px); }
+  .booking-app-btn.viber {
+    background: linear-gradient(135deg, #7360F2, #9B59B6);
+    color: #fff;
+    box-shadow: 0 4px 20px rgba(115,96,242,.4);
+  }
+  .booking-app-btn.viber:hover { box-shadow: 0 8px 32px rgba(115,96,242,.6); }
+  .booking-app-btn.whatsapp {
+    background: linear-gradient(135deg, #25D366, #128C7E);
+    color: #fff;
+    box-shadow: 0 4px 20px rgba(37,211,102,.4);
+  }
+  .booking-app-btn.whatsapp:hover { box-shadow: 0 8px 32px rgba(37,211,102,.6); }
+  .booking-divider {
+    display: flex; align-items: center; gap: 12px;
+    color: rgba(255,255,255,.4); font-size: .85rem;
+    margin-bottom: 20px;
+  }
+  .booking-divider::before, .booking-divider::after {
+    content: ''; flex: 1;
+    height: 1px; background: rgba(255,255,255,.15);
+  }
+  .booking-email-btn {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: rgba(255,255,255,.1);
+    border: 1.5px solid rgba(255,255,255,.2);
+    border-radius: 50px; padding: 13px 28px;
+    color: rgba(255,255,255,.8); text-decoration: none;
+    font-weight: 700; font-size: .95rem;
+    transition: background .2s, transform .2s;
+    margin-bottom: 28px;
+  }
+  .booking-email-btn:hover { background: rgba(255,255,255,.18); transform: translateY(-2px); }
+  .booking-phone-row {
+    display: flex; align-items: center; justify-content: center; gap: 10px;
+    background: rgba(255,255,255,.06);
+    border: 1px solid rgba(255,255,255,.1);
+    border-radius: 50px; padding: 14px 28px;
+    color: rgba(255,255,255,.7); font-size: .92rem; font-weight: 600;
+  }
+  .booking-phone-row a {
+    color: var(--green); font-weight: 800; font-size: 1rem;
+    text-decoration: none;
+  }
+  @media (max-width: 640px) {
+    .booking-card { padding: 40px 24px 32px; }
+    .booking-card-accent { margin: -40px -24px 28px; }
+    .booking-app-btns { flex-direction: column; align-items: center; }
+    .booking-app-btn { width: 100%; max-width: 280px; }
+  }
+  .booking-trust {
+    display: flex; justify-content: center; gap: 14px;
+    flex-wrap: wrap; margin-top: 36px;
+    position: relative; z-index: 1;
+  }
+  .trust-item {
+    display: flex; align-items: center; gap: 9px;
+    background: rgba(255,255,255,.07);
+    border: 1px solid rgba(255,255,255,.12);
+    backdrop-filter: blur(12px);
+    border-radius: 50px; padding: 11px 22px;
+    font-size: .85rem; font-weight: 700; color: rgba(255,255,255,.8);
+    transition: background .25s, transform .25s; cursor: default;
+  }
+  .trust-item:hover { background: rgba(255,255,255,.14); transform: translateY(-3px); }
+
+  /* ── FOOTER ── */
+  footer {
+    background: #060d06;
+    color: #fff; padding: 60px 6vw 32px;
+  }
+  .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 48px; margin-bottom: 48px; }
+  .footer-brand p { color: rgba(255,255,255,.5); font-size: .9rem; line-height: 1.75; max-width: 290px; margin-top: 14px; }
+  .footer-logo {
+    font-family: 'Baloo 2', cursive; font-size: 1.5rem; font-weight: 900;
+    color: var(--green); text-decoration: none; display: inline-flex; align-items: center; gap: 10px;
+  }
+  .footer-col h5 { font-weight: 800; margin-bottom: 20px; font-size: 1rem; color: rgba(255,255,255,.9); }
+  .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .footer-col a { color: rgba(255,255,255,.5); text-decoration: none; font-size: .9rem; transition: color .2s; }
+  .footer-col a:hover { color: var(--green); }
+  .social-links { display: flex; gap: 12px; margin-top: 24px; }
+  .social-link {
+    width: 42px; height: 42px; border-radius: 50%;
+    background: rgba(255,255,255,.08); display: grid; place-items: center;
+    text-decoration: none; font-size: 1.2rem;
+    transition: background .2s, transform .2s;
+  }
+  .social-link:hover { background: var(--green); transform: translateY(-3px); }
+  .footer-bottom {
+    border-top: 1px solid rgba(255,255,255,.08);
+    padding-top: 24px; text-align: center;
+    color: rgba(255,255,255,.3); font-size: .84rem;
+  }
+
+  /* ── SCROLL REVEAL ── */
+  .reveal { opacity: 0; transform: translateY(28px); transition: opacity .7s ease, transform .7s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 1024px) {
+    #hero { grid-template-columns: 1fr; }
+    .hero-right { display: none; }
+  }
+  @media (max-width: 900px) {
+    .about-grid { grid-template-columns: 1fr; gap: 40px; }
+    .about-grid.reverse-mobile .about-story { order: 2; }
+    .about-grid.reverse-mobile .about-photo { order: 1; }
+    .about-grid.reverse-mobile .about-story { order: 2; }
+    .about-grid.reverse-mobile .about-photo { order: 1; }
+    .gallery-grid { grid-template-columns: 1fr 1fr; }
+    .gallery-item.large { grid-column: span 2; }
+    .testimonials-grid { grid-template-columns: 1fr 1fr; }
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 640px) {
+    .nav-links, .nav-cta { display: none; }
+    .hamburger { display: flex; }
+    .gallery-grid { grid-template-columns: 1fr; }
+    .gallery-item.large { grid-column: span 1; }
+    .testimonials-grid { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: 1fr; }
+    .hero-stats { gap: 24px; }
+    .hero-stats { flex-wrap: wrap; }
+  }
+
+  /* Mobile menu */
+  .mobile-menu {
+    display: none; position: fixed; inset: 0; z-index: 200;
+    background: #0a1a0a; flex-direction: column;
+    align-items: center; justify-content: center; gap: 32px;
+  }
+  .mobile-menu.open { display: flex; }
+  .mobile-menu a {
+    font-family: 'Baloo 2', cursive; font-size: 2rem; font-weight: 900;
+    color: #fff; text-decoration: none; transition: color .2s;
+  }
+  .mobile-menu a:hover { color: var(--green); }
+  .mobile-close {
+    position: absolute; top: 20px; right: 24px;
+    font-size: 2rem; cursor: pointer; background: none; border: none; color: #fff;
+  }
+
+  /* Pricing mobile */
+  @media (max-width: 768px) {
+    .pricing-grid { grid-template-columns: 1fr !important; }
+    .pricing-featured { transform: none !important; }
+  }
+  @media (max-width: 900px) {
+    .pricing-grid { grid-template-columns: 1fr !important; }
+    .pricing-featured { transform: none !important; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">
+    <div class="shield">⚽</div>
+    <span>БТ <span class="bt">Шампиони</span></span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#about">За Нас</a></li>
+    <li><a href="#gallery">Галерия</a></li>
+    <li><a href="#pricing">Цени</a></li>
+    <li><a href="#booking">Резервирай</a></li>
+    <li><a href="#location">Локация</a></li>
+    <li><a href="#testimonials">Отзиви</a></li>
+  </ul>
+  <a href="#booking" class="nav-cta">📅 Запиши се</a>
+  <div class="hamburger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-close" onclick="toggleMenu()">✕</button>
+  <a href="#about" onclick="toggleMenu()">За Нас</a>
+  <a href="#gallery" onclick="toggleMenu()">Галерия</a>
+  <a href="#pricing" onclick="toggleMenu()">Цени</a>
+  <a href="#booking" onclick="toggleMenu()">Резервирай</a>
+  <a href="#location" onclick="toggleMenu()">Локация</a>
+  <a href="#testimonials" onclick="toggleMenu()">Отзиви</a>
+</div>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-orb hero-orb-1"></div>
+  <div class="hero-orb hero-orb-2"></div>
+
+  <div class="hero-content">
+    <div class="hero-badge">
+      <span class="live-dot"></span>
+      Записванията са отворени — Пловдив
+    </div>
+    <h1>
+      Кондиционни &amp;<br>
+      <span class="green">Футболни</span> Тренировки<br>
+      за <span class="gold">Деца</span> ⚽
+    </h1>
+    <p class="hero-sub">
+      Помагам на деца от 4 до 12 годишна възраст да изграждат сила, увереност
+      и любов към спорта — чрез движение, игра и правилни основи от ранна възраст.
+      <br><br><strong style="color:var(--gold);">🎁 Първата тренировка е безплатна!</strong>
+    </p>
+    <div class="hero-btns">
+      <a href="#booking" class="btn-primary">📅 Запиши тренировка</a>
+      <a href="#about" class="btn-secondary">Научи повече</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat">
+        <div class="stat-num">4–12</div>
+        <div class="stat-label">Годишна възраст</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">⚽</div>
+        <div class="stat-label">ФК Кронос</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">📍</div>
+        <div class="stat-label">Зала Атрим, Пловдив</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RIGHT SIDE -->
+  <div class="hero-right">
+    <!-- Profile card -->
+    <div class="hero-profile-card">
+      <div class="hero-avatar" style="overflow:hidden;padding:0;"><img src="boris.jpg" alt="Борис" style="width:100%;height:100%;object-fit:cover;object-position:center top;border-radius:50%;display:block;"></div>
+      <div class="hero-profile-info">
+        <strong>Борис Тютюков</strong>
+        <span>Детски футболен &amp; кондиционен треньор</span>
+        <span>ФК Кронос · Зала Атрим, Пловдив</span>
+      </div>
+    </div>
+
+    <!-- Mini info cards 2x2 -->
+    <div class="hero-mini-cards">
+      <div class="hero-mini-card">
+        <div class="hmc-icon">⚽</div>
+        <div class="hmc-title">Футболни тренировки</div>
+        <div class="hmc-sub">Техника, тактика и любов към играта</div>
+      </div>
+      <div class="hero-mini-card">
+        <div class="hmc-icon">💪</div>
+        <div class="hmc-title">Кондиция</div>
+        <div class="hmc-sub">Сила, скорост и координация</div>
+      </div>
+      <div class="hero-mini-card">
+        <div class="hmc-icon">🛡️</div>
+        <div class="hmc-title">Безопасна среда</div>
+        <div class="hmc-sub">Адаптирано за всяко дете</div>
+      </div>
+      <div class="hero-mini-card">
+        <div class="hmc-icon">📅</div>
+        <div class="hmc-title">Лесна резервация</div>
+        <div class="hmc-sub">Онлайн записване</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-grid reveal">
+
+    <div class="about-photo">
+      <img src="boris.jpg" alt="Борис Тютюков" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;display:block;">
+      <div class="about-badge">
+        <div class="about-badge-icon">⚽</div>
+        <div class="about-badge-text">
+          <strong>Борис Тютюков</strong>
+          <span>Треньор | ФК Кронос, Пловдив</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="about-story">
+      <span class="section-label label-green">За Треньора</span>
+      <h2>Здравейте, аз съм<br><span style="color:var(--green)">Борис Тютюков!</span></h2>
+
+      <p>
+        В момента съм треньор във <strong>ФК Кронос</strong>, където провеждам
+        кондиционни и футболни тренировки за деца. Моят път във футбола
+        започна като юноша на <strong>Марица Пловдив</strong> — там направих
+        първите си стъпки в спорта.
+      </p>
+
+      <div class="story-highlight">
+        🏆 Първият ми треньор беше <strong>Огнян Атанасов</strong> — човекът, който е
+        и първи треньор на легендата <strong>Христо Стоичков</strong>.
+      </div>
+
+      <p>
+        Направих дебюта си в мъжкия футбол с <strong>Ботев Пловдив</strong> под
+        ръководството на <strong>Станимир Стоилов</strong>. В кариерата си работих
+        и под ръководството на <strong>Христо Янев</strong> — днес старши треньор на
+        ЦСКА София — изключителен специалист, от когото съм научил много.
+      </p>
+
+      <p>
+        Днес използвам целия натрупан опит, за да помагам на децата да се развиват —
+        не само физически, но и като <strong>дисциплина, увереност и любов към спорта</strong>.
+        Ще се радвам да бъда част от развитието на Вашето дете!
+      </p>
+
+      <div class="about-features">
+
+        <div class="about-feature">
+          <div class="af-icon" style="background:var(--gold-light)">🎯</div>
+          <div class="af-text">
+            <strong>Индивидуален подход</strong>
+            <span>Всяко дете е различно — тренировките се нагаждат към него</span>
+          </div>
+        </div>
+        <div class="about-feature">
+          <div class="af-icon" style="background:var(--green-light)">💪</div>
+          <div class="af-text">
+            <strong>Изграждане на силен дух и дисциплина</strong>
+            <span>Здрави основи от ранна възраст, изградени с усмивка</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+
+  <!-- ВТОРИ ТРЕНЬОР -->
+  <div class="about-grid reverse-mobile reveal" style="margin-top: 80px; padding-top: 60px; border-top: 2px solid var(--green-light);">
+
+    <div class="about-story">
+      <span class="section-label label-green">Нашият Екип</span>
+      <h2>Христиан Димитров 🏅</h2>
+
+      <p class="section-sub" style="margin-bottom: 20px;">
+        Христиан е неразделна част от отбора на БТ Шампиони — млад, амбициозен
+        и изключително отдаден на работата с деца.
+      </p>
+
+      <p style="color: var(--text-muted); font-size: .97rem; line-height: 1.8; margin-bottom: 16px;">
+        С <strong>над 3 години опит</strong> в работата с деца, Христиан познава
+        нуждите на всяко дете и умее да изгражда доверие и мотивация още от първата тренировка.
+        В момента е треньор във <strong>ФК Кронос</strong>, където заедно с Борис помага
+        на децата да растат не само като спортисти, но и като личности.
+      </p>
+
+      <p style="color: var(--text-muted); font-size: .97rem; line-height: 1.8;">
+        Търпелив, позитивен и взискателен — Христиан създава среда, в която
+        всяко дете се чувства видяно и насърчено да дава най-доброто от себе си.
+      </p>
+
+      <div class="about-features" style="margin-top: 24px;">
+        <div class="about-feature">
+          <div class="af-icon" style="background:var(--green-light)">⏱️</div>
+          <div class="af-text">
+            <strong>Над 3 години опит с деца</strong>
+            <span>Индивидуален подход към всяко дете</span>
+          </div>
+        </div>
+        <div class="about-feature">
+          <div class="af-icon" style="background:var(--gold-light)">⚽</div>
+          <div class="af-text">
+            <strong>Треньор във ФК Кронос</strong>
+            <span>Активна работа на терен всеки ден</span>
+          </div>
+        </div>
+        <div class="about-feature">
+          <div class="af-icon" style="background:var(--green-light)">🌟</div>
+          <div class="af-text">
+            <strong>Мотивация и позитивна енергия</strong>
+            <span>Децата обичат тренировките му — искат да се върнат!</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="about-photo">
+      <img src="hristo.jpg" alt="Христиан Димитров — Треньор ФК Кронос" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;display:block;">
+      <div class="about-badge">
+        <div class="about-badge-icon">🏅</div>
+        <div class="about-badge-text">
+          <strong>Христиан Димитров</strong>
+          <span>Треньор | ФК Кронос, Пловдив</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</section>
+
+<!-- GALLERY -->
+<section id="gallery">
+  <div class="gallery-header">
+    <span class="section-label label-green">Галерия</span>
+    <h2>От нашите Тренировки 📸</h2>
+    <p class="section-sub" style="margin: 0 auto; text-align:center">
+      Моменти от работата ни в Зала Атрим — движение, усилие и усмивки!
+    </p>
+  </div>
+
+  <div class="gallery-grid">
+    <!-- Large featured item -->
+    <div class="gallery-item large reveal">
+      <video autoplay muted loop playsinline style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#0d2010;z-index:0;">
+        <source src="video1.mp4" type="video/mp4">
+      </video>
+      <div class="gallery-overlay"><span>🏃 Тренировка в действие</span></div>
+    </div>
+
+    <!-- Smaller items -->
+    <div class="gallery-item reveal" style="transition-delay:.1s;">
+      <img src="hall.jpg" alt="Зала Атрим" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;background:#000;">
+      <div class="gallery-overlay"><span>📍 Зала Атрим</span></div>
+    </div>
+
+    <div class="gallery-item reveal" style="transition-delay:.15s;">
+      <video autoplay muted loop playsinline style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;background:#000;">
+        <source src="video2.mp4" type="video/mp4">
+      </video>
+      <div class="gallery-overlay"><span>⚽ Тренировка</span></div>
+    </div>
+
+    <div class="gallery-item reveal" style="transition-delay:.2s;">
+      <video autoplay muted loop playsinline style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;background:#000;">
+        <source src="video3.mp4" type="video/mp4">
+      </video>
+      <div class="gallery-overlay"><span>👦 Тренировка с деца</span></div>
+    </div>
+
+    <div class="gallery-item reveal" style="transition-delay:.25s">
+      <video autoplay muted loop playsinline style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;">
+        <source src="video4.mp4" type="video/mp4">
+      </video>
+      <div class="gallery-overlay"><span>⚽ Тренировка</span></div>
+    </div>
+  </div>
+
+  <p class="gallery-note">
+    Виж още снимки и видеа в Instagram →
+    <a href="https://www.instagram.com/pro.football.condition" target="_blank">@pro.football.condition</a>
+  </p>
+</section>
+
+<!-- PRICING -->
+<section id="pricing" style="background:#fff;padding:90px 6vw;">
+  <div style="text-align:center;margin-bottom:52px;">
+    <span style="display:inline-block;background:var(--green-light);color:var(--green-dark);font-weight:800;font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;padding:6px 16px;border-radius:50px;margin-bottom:14px;">Цени</span>
+    <h2 style="font-family:'Nunito',sans-serif;font-size:clamp(1.7rem,5vw,2.9rem);font-weight:900;margin-bottom:12px;color:#0F1F0F;letter-spacing:-.5px;">Изберете вашия пакет 💪</h2>
+    <p style="color:var(--text-muted);font-size:1.05rem;max-width:480px;margin:0 auto;line-height:1.7;">
+      Гъвкави пакети, подходящи за всяко семейство.
+    </p>
+  </div>
+
+  <div class="pricing-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px;max-width:960px;margin:0 auto;">
+
+    <!-- Единична тренировка -->
+    <div style="background:var(--bg);border-radius:24px;padding:36px 28px;border:2px solid var(--green-light);text-align:center;transition:transform .3s,box-shadow .3s;display:flex;flex-direction:column;" onmouseover="this.style.transform='translateY(-6px)';this.style.boxShadow='0 20px 56px rgba(0,0,0,.1)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
+      <div style="font-size:2.2rem;margin-bottom:12px;">⚡</div>
+      <h3 style="font-family:'Nunito',sans-serif;font-size:1.15rem;font-weight:900;margin-bottom:8px;color:#0F1F0F;">Единична тренировка</h3>
+      <div style="font-family:'Baloo 2',cursive;font-size:2.8rem;font-weight:900;color:var(--green);line-height:1;margin:16px 0 4px;">15€</div>
+      <div style="color:var(--text-muted);font-size:.85rem;margin-bottom:24px;">на тренировка</div>
+      <ul style="list-style:none;text-align:left;margin-bottom:28px;display:flex;flex-direction:column;gap:10px;flex:1;">
+        <li style="display:flex;align-items:center;gap:10px;font-size:.92rem;">🎁 Първа тренировка безплатно</li>
+        <li style="display:flex;align-items:center;gap:10px;font-size:.92rem;">✅ Проследяване на прогреса</li>
+        <li style="display:flex;align-items:center;gap:10px;font-size:.92rem;">✅ Индивидуален подход</li>
+      </ul>
+      <a href="#booking" style="display:block;background:var(--green);color:#fff;border-radius:50px;padding:13px 24px;font-weight:800;font-size:.95rem;text-decoration:none;transition:box-shadow .2s;" onmouseover="this.style.boxShadow='0 8px 24px rgba(29,185,84,.4)'" onmouseout="this.style.boxShadow=''">Запиши се</a>
+    </div>
+
+    <!-- Месечен пакет (ПОПУЛЯРЕН) -->
+    <div style="background:linear-gradient(145deg,#0a1a0a,#0f2d18);border-radius:24px;padding:36px 28px;border:2px solid var(--green);text-align:center;position:relative;transform:scale(1.05);box-shadow:0 20px 60px rgba(29,185,84,.2);display:flex;flex-direction:column;" class="pricing-featured">
+      <div style="position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:var(--gold);color:#3a2000;font-weight:900;font-size:.78rem;padding:5px 18px;border-radius:50px;letter-spacing:.05em;white-space:nowrap;">⭐ НАЙ-ПОПУЛЯРЕН</div>
+      <div style="font-size:2.2rem;margin-bottom:12px;">🏆</div>
+      <h3 style="font-family:'Nunito',sans-serif;font-size:1.15rem;font-weight:900;margin-bottom:8px;color:#fff;">Месечен пакет</h3>
+      <div style="font-family:'Baloo 2',cursive;font-size:2.8rem;font-weight:900;color:var(--green);line-height:1;margin:16px 0 4px;">100€</div>
+      <div style="color:rgba(255,255,255,.6);font-size:.85rem;margin-bottom:4px;">на месец</div>
+      <div style="color:var(--gold);font-size:.82rem;font-weight:700;margin-bottom:24px;">Спестявате ~33% 🎉</div>
+      <ul style="list-style:none;text-align:left;margin-bottom:28px;display:flex;flex-direction:column;gap:10px;flex:1;">
+        <li style="display:flex;align-items:center;gap:10px;font-size:.92rem;color:rgba(255,255,255,.85);">🎁 Първа тренировка безплатно</li>
+        <li style="display:flex;align-items:center;gap:10px;font-size:.92rem;color:rgba(255,255,255,.85);">✅ 8 тренировки месечно</li>
+        <li style="display:flex;align-items:center;gap:10px;font-size:.92rem;color:rgba(255,255,255,.85);">✅ Проследяване на прогреса</li>
+        <li style="display:flex;align-items:center;gap:10px;font-size:.92rem;color:rgba(255,255,255,.85);">✅ Индивидуален подход</li>
+      </ul>
+      <a href="#booking" style="display:block;background:var(--green);color:#fff;border-radius:50px;padding:13px 24px;font-weight:800;font-size:.95rem;text-decoration:none;box-shadow:0 8px 24px rgba(29,185,84,.4);">Запиши се</a>
+    </div>
+
+    <!-- Семеен пакет -->
+    <div style="background:var(--bg);border-radius:24px;padding:36px 28px;border:2px solid var(--gold-light);text-align:center;transition:transform .3s,box-shadow .3s;display:flex;flex-direction:column;" onmouseover="this.style.transform='translateY(-6px)';this.style.boxShadow='0 20px 56px rgba(0,0,0,.1)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
+      <div style="font-size:2.2rem;margin-bottom:12px;">👨‍👩‍👧</div>
+      <h3 style="font-family:'Nunito',sans-serif;font-size:1.15rem;font-weight:900;margin-bottom:8px;color:#0F1F0F;">Семеен пакет</h3>
+      <div style="font-family:'Baloo 2',cursive;font-size:2.8rem;font-weight:900;color:var(--gold);line-height:1;margin:16px 0 4px;">170€</div>
+      <div style="color:var(--text-muted);font-size:.85rem;margin-bottom:4px;">на месец / 2 деца</div>
+      <div style="color:#8B6600;font-size:.82rem;font-weight:700;margin-bottom:24px;">Спестявате 30€ 🎉</div>
+      <ul style="list-style:none;text-align:left;margin-bottom:28px;display:flex;flex-direction:column;gap:10px;flex:1;">
+        <li style="display:flex;align-items:center;gap:10px;font-size:.92rem;">🎁 Първа тренировка безплатно</li>
+        <li style="display:flex;align-items:center;gap:10px;font-size:.92rem;">✅ Проследяване на прогреса</li>
+        <li style="display:flex;align-items:center;gap:10px;font-size:.92rem;">✅ Индивидуален подход</li>
+        <li style="display:flex;align-items:center;gap:10px;font-size:.92rem;">✅ Две деца от семейството</li>
+      </ul>
+      <a href="#booking" style="display:block;background:var(--green);color:#fff;border-radius:50px;padding:13px 24px;font-weight:800;font-size:.95rem;text-decoration:none;transition:box-shadow .2s;" onmouseover="this.style.boxShadow='0 8px 24px rgba(245,184,0,.4)'" onmouseout="this.style.boxShadow=''">Запиши се</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- BOOKING -->
+<section id="booking">
+  <div class="booking-orb booking-orb-1"></div>
+  <div class="booking-orb booking-orb-2"></div>
+
+  <div style="position:relative;z-index:1;max-width:680px;margin:0 auto;text-align:center;">
+    <span class="section-label" style="background:rgba(29,185,84,.18);color:#5FE890;">Резервирай</span>
+    <h2 style="color:#fff;margin:14px 0 12px;">Запиши Тренировка 📅</h2>
+    <p style="color:rgba(255,255,255,.65);font-size:1rem;margin-bottom:40px;line-height:1.7;">
+      Свържете се с нас директно — ще отговорим веднага и ще запишем удобен час за вашето дете!
+    </p>
+
+    <div style="background:rgba(255,255,255,.08);border:1.5px solid rgba(255,255,255,.15);backdrop-filter:blur(20px);border-radius:28px;padding:40px 36px;margin-bottom:32px;">
+      <div style="height:4px;background:linear-gradient(90deg,var(--green),var(--gold));border-radius:4px;margin:-40px -36px 32px;border-radius:28px 28px 0 0;"></div>
+
+      <h3 style="font-family:'Baloo 2',cursive;font-size:1.7rem;font-weight:900;color:#fff;margin-bottom:10px;">
+        Пиши ни директно —<br>записваме те веднага! 🚀
+      </h3>
+      <p style="color:rgba(255,255,255,.6);font-size:.95rem;margin-bottom:28px;">
+        Натисни бутона и стартира разговор директно в любимото ти приложение.
+      </p>
+
+      <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-bottom:24px;">
+        <a href="viber://chat?number=359898660428" style="display:inline-flex;align-items:center;gap:10px;background:linear-gradient(135deg,#7360F2,#9B59B6);color:#fff;border-radius:50px;padding:16px 32px;font-family:'Nunito',sans-serif;font-weight:800;font-size:1rem;text-decoration:none;transition:transform .2s,box-shadow .2s;box-shadow:0 4px 20px rgba(115,96,242,.4);">
+          💜 Пиши във Viber
+        </a>
+        <a href="https://wa.me/359898660428" target="_blank" style="display:inline-flex;align-items:center;gap:10px;background:linear-gradient(135deg,#25D366,#128C7E);color:#fff;border-radius:50px;padding:16px 32px;font-family:'Nunito',sans-serif;font-weight:800;font-size:1rem;text-decoration:none;transition:transform .2s,box-shadow .2s;box-shadow:0 4px 20px rgba(37,211,102,.4);">
+          💬 Пиши в WhatsApp
+        </a>
+      </div>
+
+      <div style="display:flex;align-items:center;gap:12px;color:rgba(255,255,255,.4);font-size:.85rem;margin-bottom:20px;">
+        <span style="flex:1;height:1px;background:rgba(255,255,255,.15);display:block;"></span>
+        или се свържи по
+        <span style="flex:1;height:1px;background:rgba(255,255,255,.15);display:block;"></span>
+      </div>
+
+      <a href="mailto:btyutyukov7@icloud.com" style="display:inline-flex;align-items:center;gap:10px;background:rgba(255,255,255,.1);border:1.5px solid rgba(255,255,255,.2);border-radius:50px;padding:13px 28px;color:rgba(255,255,255,.8);text-decoration:none;font-weight:700;font-size:.95rem;margin-bottom:20px;">
+        ✉️ Изпрати имейл
+      </a>
+
+      <div style="background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:50px;padding:14px 28px;color:rgba(255,255,255,.7);font-size:.92rem;font-weight:600;">
+        📞 Обади се: <a href="tel:0898660428" style="color:var(--green);font-weight:800;font-size:1rem;text-decoration:none;">0898 660 428</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="booking-trust">
+    <div class="trust-item">✅ Безплатна първа консултация</div>
+    <div class="trust-item">⚡ Бърз отговор</div>
+    <div class="trust-item">🔄 Лесно пренасрочване</div>
+    <div class="trust-item">🛡️ Безопасна среда за деца</div>
+    <div class="trust-item">📍 Зала Атрим, Пловдив</div>
+  </div>
+</section>
+
+<!-- FOOTER
+
+<!-- LOCATION -->
+<section id="location" style="background:#f8faf8;padding:80px 6vw;">
+  <div style="text-align:center;margin-bottom:48px;">
+    <span style="display:inline-block;background:var(--green-light);color:var(--green-dark);font-weight:800;font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;padding:6px 16px;border-radius:50px;margin-bottom:14px;">Локация</span>
+    <h2 style="font-family:'Baloo 2',cursive;font-size:clamp(1.9rem,4vw,2.9rem);font-weight:900;margin-bottom:12px;">Намерете ни лесно 📍</h2>
+    <p style="color:var(--text-muted);font-size:1.05rem;max-width:480px;margin:0 auto;line-height:1.7;">
+      Тренировките се провеждат в модерна зала в Пловдив
+    </p>
+  </div>
+
+  <div style="max-width:860px;margin:0 auto;">
+    <!-- Location Card -->
+    <div style="background:#fff;border-radius:28px;box-shadow:0 8px 40px rgba(0,0,0,.08);overflow:hidden;">
+
+      <!-- Map embed -->
+      <div style="position:relative;height:320px;background:#e8f0e8;overflow:hidden;">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2964.123!2d24.7815!3d42.1354!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14acd13e9b4c4e8d%3A0x5e3f8e2c3e1d4b5a!2z0JDRgtGA0LjRg9C8INCA0JDRgNC10L3QsA!5e0!3m2!1sbg!2sbg!4v1234567890"
+          width="100%" height="320" style="border:0;display:block;" allowfullscreen="" loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+        <!-- Overlay gradient at bottom -->
+        <div style="position:absolute;bottom:0;left:0;right:0;height:60px;background:linear-gradient(to top,rgba(255,255,255,.8),transparent);pointer-events:none;"></div>
+      </div>
+
+      <!-- Info row -->
+      <div style="padding:28px 32px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:20px;">
+
+        <div style="display:flex;align-items:flex-start;gap:16px;">
+          <div style="width:48px;height:48px;border-radius:14px;background:var(--green-light);display:flex;align-items:center;justify-content:center;font-size:1.4rem;flex-shrink:0;">📍</div>
+          <div>
+            <div style="font-family:'Baloo 2',cursive;font-size:1.15rem;font-weight:900;color:var(--text);margin-bottom:4px;">Атрим Арена</div>
+            <div style="color:var(--text-muted);font-size:.9rem;line-height:1.6;">
+              бул. Цариградско шосе 53<br>
+              Промишлена зона Изгрев, 4000 Пловдив
+            </div>
+            <div style="display:flex;align-items:center;gap:6px;margin-top:6px;">
+              <span style="color:#f5b800;font-size:.9rem;">★★★★★</span>
+              <span style="font-weight:700;font-size:.88rem;color:var(--text);">4.7</span>
+              <span style="color:var(--text-muted);font-size:.82rem;">(617 отзива)</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Navigate button -->
+        <a href="https://maps.google.com/?q=Атрим+Арена,+бул.+Цариградско+шосе+53,+Пловдив"
+           target="_blank"
+           style="display:inline-flex;align-items:center;gap:10px;background:var(--green);color:#fff;border-radius:50px;padding:14px 28px;font-family:'Nunito',sans-serif;font-weight:800;font-size:.95rem;text-decoration:none;box-shadow:0 4px 20px rgba(29,185,84,.35);transition:transform .2s,box-shadow .2s;white-space:nowrap;"
+           onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 8px 32px rgba(29,185,84,.5)'"
+           onmouseout="this.style.transform='';this.style.boxShadow='0 4px 20px rgba(29,185,84,.35)'">
+          🗺️ Навигирай до залата
+        </a>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials">
+  <div class="testimonials-header">
+    <span class="section-label label-gold">Отзиви</span>
+    <h2>Какво казват Родителите ⭐</h2>
+    <p class="section-sub" style="margin: 0 auto; text-align:center">
+      Мнението на семействата, чиито деца тренират при Борис
+    </p>
+  </div>
+
+  <div class="testimonials-grid">
+    <div class="testimonial-card reveal">
+      <div class="t-stars">★★★★★</div>
+      <p class="t-text">Децата ще са в сигурни ръце. Успех Бобо!</p>
+      <div class="t-author">
+        
+        <div>
+          <div class="t-name">Nikolay Kogelov</div>
+          <div class="t-role">Родител</div>
+        </div>
+      </div>
+    </div>
+    <div class="testimonial-card reveal" style="transition-delay:.1s">
+      <div class="t-stars">★★★★★</div>
+      <p class="t-text">Страхотен пример за младите футболисти, не само като професионалист, но и като човек!</p>
+      <div class="t-author">
+        
+        <div>
+          <div class="t-name">Запрян Запрянов</div>
+          <div class="t-role">Треньор и настоящ футболист</div>
+        </div>
+      </div>
+    </div>
+    <div class="testimonial-card reveal" style="transition-delay:.2s">
+      <div class="t-stars">★★★★★</div>
+      <p class="t-text">Страхотен треньор и човек!</p>
+      <div class="t-author">
+        
+        <div>
+          <div class="t-name">Hari Hovagimyan</div>
+          <div class="t-role">Родител</div>
+        </div>
+      </div>
+    </div>
+    <div class="testimonial-card reveal" style="transition-delay:.3s">
+      <div class="t-stars">★★★★★</div>
+      <p class="t-text">Успех, Бобка, дано вземат от твоята скромност извън терена и стараниeто и отдадеността на терена. 🍀</p>
+      <div class="t-author">
+        
+        <div>
+          <div class="t-name">Венцислав Бенгюзов</div>
+          <div class="t-role">Бивш съотборник</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BOOKING<!-- BOOKING<!-- BOOKING<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <a href="#" class="footer-logo">⚽ БТ Шампиони</a>
+      <p>Кондиционни и футболни тренировки за деца от 4 до 12 години в Пловдив. Изграждаме здрави основи, дисциплина и любов към спорта.</p>
+      <div class="social-links">
+        <a href="https://www.instagram.com/pro.football.condition" target="_blank" class="social-link" title="Instagram">📸</a>
+        <a href="https://www.facebook.com/share/1Co7J9Wam7/" target="_blank" class="social-link" title="Facebook">📘</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h5>Навигация</h5>
+      <ul>
+        <li><a href="#about">За Нас</a></li>
+        <li><a href="#gallery">Галерия</a></li>
+        <li><a href="#testimonials">Отзиви</a></li>
+        <li><a href="#pricing">Цени</a></li>
+    <li><a href="#booking">Резервирай</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Контакти</h5>
+      <ul>
+        <li><a href="tel:0898660428">📞 0898 660 428</a></li>
+        <li><a href="/cdn-cgi/l/email-protection#a4c6d0ddd1d0ddd1cfcbd293e4cdc7c8cbd1c08ac7cbc9">✉️ <span class="__cf_email__" data-cfemail="284a5c515d5c515d43475e1f68414b44475d4c064b4745">[email&#160;protected]</span></a></li>
+        <li><a href="#">📍 Зала Атрим, Пловдив</a></li>
+        <li><a href="https://www.instagram.com/pro.football.condition" target="_blank">📸 @pro.football.condition</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    © 2025 БТ Шампиони — Борис Тютюков. Всички права запазени. Направено с ❤️ за децата на Пловдив.
+  </div>
+</footer>
+
+<script>
+  // Scroll reveal
+  const revealEls = document.querySelectorAll('.reveal');
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.08 });
+  revealEls.forEach(el => revealObserver.observe(el));
+
+  
+  function toggleMenu() {
+    document.getElementById('mobileMenu').classList.toggle('open');
+  }
+</script>
+
+<!-- FLOATING BUTTONS -->
+<div style="position:fixed;bottom:24px;right:24px;z-index:999;display:flex;flex-direction:column;gap:12px;align-items:flex-end;">
+
+  <!-- Phone -->
+  <a href="tel:0898660428" title="Обади се"
+     style="width:54px;height:54px;border-radius:50%;background:#fff;box-shadow:0 4px 20px rgba(0,0,0,.18);display:flex;align-items:center;justify-content:center;text-decoration:none;transition:transform .2s,box-shadow .2s;"
+     onmouseover="this.style.transform='scale(1.1)';this.style.boxShadow='0 8px 28px rgba(0,0,0,.25)'"
+     onmouseout="this.style.transform='';this.style.boxShadow='0 4px 20px rgba(0,0,0,.18)'">
+    <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="#25D366">
+      <path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/>
+    </svg>
+  </a>
+
+  <!-- WhatsApp -->
+  <a href="https://wa.me/359898660428" target="_blank" title="WhatsApp"
+     style="width:54px;height:54px;border-radius:50%;background:#25D366;box-shadow:0 4px 20px rgba(37,211,102,.45);display:flex;align-items:center;justify-content:center;text-decoration:none;transition:transform .2s,box-shadow .2s;"
+     onmouseover="this.style.transform='scale(1.1)';this.style.boxShadow='0 8px 28px rgba(37,211,102,.6)'"
+     onmouseout="this.style.transform='';this.style.boxShadow='0 4px 20px rgba(37,211,102,.45)'">
+    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 48 48">
+      <path fill="#fff" d="M24 4C12.95 4 4 12.95 4 24c0 3.67.99 7.11 2.71 10.07L4 44l10.19-2.67A19.93 19.93 0 0 0 24 44c11.05 0 20-8.95 20-20S35.05 4 24 4zm0 36c-3.27 0-6.32-.92-8.91-2.52l-.64-.38-6.04 1.58 1.61-5.88-.41-.67A15.93 15.93 0 0 1 8 24c0-8.82 7.18-16 16-16s16 7.18 16 16-7.18 16-16 16zm8.69-11.93c-.47-.24-2.79-1.38-3.22-1.53-.44-.16-.76-.24-1.08.24-.32.47-1.23 1.53-1.51 1.85-.28.32-.56.36-1.03.12-.47-.24-2-.74-3.81-2.35-1.41-1.26-2.36-2.81-2.64-3.28-.28-.47-.03-.72.21-.96.22-.21.47-.56.71-.84.24-.28.32-.47.47-.79.16-.32.08-.6-.04-.84-.12-.24-1.08-2.6-1.48-3.56-.39-.93-.79-.8-1.08-.82-.28-.01-.6-.01-.91-.01-.32 0-.84.12-1.28.6-.44.47-1.67 1.63-1.67 3.99s1.71 4.63 1.95 4.95c.24.32 3.37 5.14 8.16 7.21 1.14.49 2.03.79 2.72 1.01 1.14.36 2.18.31 3 .19.92-.14 2.79-1.14 3.18-2.24.4-1.1.4-2.04.28-2.24-.12-.2-.44-.32-.91-.56z"/>
+    </svg>
+  </a>
+
+  <!-- Viber -->
+  <a href="viber://chat?number=359898660428" title="Viber"
+     style="width:54px;height:54px;border-radius:50%;background:#7360F2;box-shadow:0 4px 20px rgba(115,96,242,.45);display:flex;align-items:center;justify-content:center;text-decoration:none;transition:transform .2s,box-shadow .2s;"
+     onmouseover="this.style.transform='scale(1.1)';this.style.boxShadow='0 8px 28px rgba(115,96,242,.6)'"
+     onmouseout="this.style.transform='';this.style.boxShadow='0 4px 20px rgba(115,96,242,.45)'">
+    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 48 48">
+      <path fill="#fff" d="M24 4C12.95 4 4.5 11.5 4.5 22.5c0 5.5 2.3 10.5 6 14v6.5l6.2-3.4c2.2.6 4.5.9 7.3.9C35.05 40.5 43.5 33 43.5 22.5S35.05 4 24 4zm2.5 24.5c-.5.5-1 .8-1.6.8-.4 0-.8-.1-1.2-.4-2-1.2-3.8-2.7-5.2-4.5-1.2-1.5-2.1-3.2-2.6-5-.2-.7-.1-1.4.3-1.9l1.2-1.2c.5-.5 1.2-.5 1.7 0l2 2c.5.5.5 1.2 0 1.7l-.8.8c.4.9 1 1.7 1.7 2.4.7.7 1.5 1.3 2.4 1.7l.8-.8c.5-.5 1.2-.5 1.7 0l2 2c.5.5.5 1.2 0 1.7l-2.4 2.7zm3.5-8c0-3.3-2.7-6-6-6v-2c4.4 0 8 3.6 8 8h-2zm4 0c0-5.5-4.5-10-10-10v-2c6.6 0 12 5.4 12 12h-2z"/>
+    </svg>
+  </a>
+
+</div>
+</body>
+</html>
