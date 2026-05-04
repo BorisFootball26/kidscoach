@@ -3,22 +3,30 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="icon" type="image/x-icon" href="favicon.ico">
-<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#1DB954">
+<link rel="canonical" href="https://profootballathlete.com/">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%231DB954' rx='18'/%3E%3Ccircle cx='50' cy='50' r='30' fill='white'/%3E%3Cpolygon points='50,30 60,42 56,58 44,58 40,42' fill='%230a1a0a'/%3E%3C/svg%3E">
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <meta name="description" content="Кондиционни и футболни тренировки за деца от 4 до 12 години в Пловдив. Треньор Борис Тютюков, ФК Кронос — Зала Атрим. Първата тренировка е безплатна.">
 
 <!-- Open Graph -->
 <meta property="og:type" content="website">
 <meta property="og:locale" content="bg_BG">
+<meta property="og:url" content="https://profootballathlete.com/">
+<meta property="og:site_name" content="БТ Шампиони">
 <meta property="og:title" content="БТ Шампиони — Борис Тютюков | Детски Футболен Треньор, Пловдив">
 <meta property="og:description" content="Кондиционни и футболни тренировки за деца от 4 до 12 години в Пловдив. Първата тренировка е безплатна.">
-<meta property="og:image" content="boris.jpg">
+<meta property="og:image" content="https://profootballathlete.com/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="БТ Шампиони — Детски Футболен Треньор в Пловдив">
 
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="БТ Шампиони — Детски Футболен Треньор, Пловдив">
 <meta name="twitter:description" content="Кондиционни и футболни тренировки за деца от 4 до 12 години в Пловдив. Първата тренировка е безплатна.">
-<meta name="twitter:image" content="boris.jpg">
+<meta name="twitter:image" content="https://profootballathlete.com/og-image.jpg">
 
 <title>БТ Шампиони — Борис Тютюков | Детски Футболен Треньор, Пловдив</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -95,7 +103,7 @@
   }
   .nav-cta:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(29,185,84,.4); }
 
-  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 0; }
+  .hamburger { display: none; flex-direction: column; justify-content: center; align-items: center; gap: 5px; cursor: pointer; background: none; border: none; padding: 12px; min-width: 44px; min-height: 44px; }
   .hamburger span { width: 26px; height: 3px; background: var(--text); border-radius: 4px; }
 
   /* ── HERO ── */
@@ -195,7 +203,6 @@
     display: flex; gap: 36px; margin-top: 52px;
     animation: fadeUp .6s .4s ease both;
   }
-  .stat { }
   .stat-num {
     font-family: 'Baloo 2', cursive;
     font-size: 2.2rem; font-weight: 900; color: var(--green);
@@ -583,14 +590,14 @@
     color: #fff; padding: 60px 6vw 32px;
   }
   .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 48px; margin-bottom: 48px; }
-  .footer-brand p { color: rgba(255,255,255,.5); font-size: .9rem; line-height: 1.75; max-width: 290px; margin-top: 14px; }
+  .footer-brand p { color: rgba(255,255,255,.65); font-size: .9rem; line-height: 1.75; max-width: 290px; margin-top: 14px; }
   .footer-logo {
     font-family: 'Baloo 2', cursive; font-size: 1.5rem; font-weight: 900;
     color: var(--green); text-decoration: none; display: inline-flex; align-items: center; gap: 10px;
   }
   .footer-col h5 { font-weight: 800; margin-bottom: 20px; font-size: 1rem; color: rgba(255,255,255,.9); }
   .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
-  .footer-col a { color: rgba(255,255,255,.5); text-decoration: none; font-size: .9rem; transition: color .2s; }
+  .footer-col a { color: rgba(255,255,255,.7); text-decoration: none; font-size: .9rem; transition: color .2s; }
   .footer-col a:hover { color: var(--green); }
   .social-links { display: flex; gap: 12px; margin-top: 24px; }
   .social-link {
@@ -603,7 +610,7 @@
   .footer-bottom {
     border-top: 1px solid rgba(255,255,255,.08);
     padding-top: 24px; text-align: center;
-    color: rgba(255,255,255,.3); font-size: .84rem;
+    color: rgba(255,255,255,.6); font-size: .84rem;
   }
 
   /* ── SCROLL REVEAL ── */
@@ -632,6 +639,9 @@
     .testimonials-grid { grid-template-columns: 1fr; }
     .footer-grid { grid-template-columns: 1fr; }
     .hero-stats { gap: 24px; flex-wrap: wrap; }
+    .footer-col ul { gap: 4px; }
+    .footer-col a { display: inline-block; padding: 10px 0; }
+    .social-link { width: 44px; height: 44px; }
   }
 
   /* Mobile menu */
@@ -647,14 +657,35 @@
   }
   .mobile-menu a:hover { color: var(--green); }
   .mobile-close {
-    position: absolute; top: 20px; right: 24px;
+    position: absolute; top: 12px; right: 16px;
     font-size: 2rem; cursor: pointer; background: none; border: none; color: #fff;
+    min-width: 44px; min-height: 44px; display: flex; align-items: center; justify-content: center; padding: 0; line-height: 1;
   }
 
   /* Pricing mobile */
   @media (max-width: 900px) {
     .pricing-grid { grid-template-columns: 1fr !important; }
     .pricing-featured { transform: none !important; }
+  }
+
+  /* Reduced motion accessibility */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+    .reveal { opacity: 1 !important; transform: none !important; }
+  }
+
+  /* Disable expensive backdrop-filter on mobile (GPU performance) */
+  @media (max-width: 768px) {
+    nav, .hero-badge, .hero-profile-card, .hero-mini-card,
+    .about-badge, .booking-card, .trust-item {
+      backdrop-filter: none;
+      -webkit-backdrop-filter: none;
+    }
   }
 </style>
 </head>
@@ -674,7 +705,7 @@
     <li><a href="#location">Локация</a></li>
     <li><a href="#testimonials">Отзиви</a></li>
   </ul>
-  <a href="#booking" class="nav-cta">📅 Запиши се</a>
+  <a href="#booking" class="nav-cta"><span aria-hidden="true">📅</span> Запиши се</a>
   <button class="hamburger" type="button" onclick="toggleMenu()" aria-label="Отвори меню" aria-expanded="false" aria-controls="mobileMenu">
     <span></span><span></span><span></span>
   </button>
@@ -714,7 +745,7 @@
       <br><br><strong style="color:var(--gold);">🎁 Първата тренировка е безплатна!</strong>
     </p>
     <div class="hero-btns">
-      <a href="#booking" class="btn-primary">📅 Запиши тренировка</a>
+      <a href="#booking" class="btn-primary"><span aria-hidden="true">📅</span> Запиши тренировка</a>
       <a href="#about" class="btn-secondary">Научи повече</a>
     </div>
     <div class="hero-stats">
@@ -737,7 +768,7 @@
   <div class="hero-right">
     <!-- Profile card -->
     <div class="hero-profile-card">
-      <div class="hero-avatar" style="overflow:hidden;padding:0;"><img src="boris.jpg" alt="Борис" style="width:100%;height:100%;object-fit:cover;object-position:center top;border-radius:50%;display:block;"></div>
+      <div class="hero-avatar" style="overflow:hidden;padding:0;"><img src="boris.jpg" alt="Борис" fetchpriority="high" style="width:100%;height:100%;object-fit:cover;object-position:center top;border-radius:50%;display:block;"></div>
       <div class="hero-profile-info">
         <strong>Борис Тютюков</strong>
         <span>Детски футболен &amp; кондиционен треньор</span>
@@ -1110,10 +1141,10 @@
               бул. Цариградско шосе 53<br>
               Промишлена зона Изгрев, 4000 Пловдив
             </div>
-            <div style="display:flex;align-items:center;gap:6px;margin-top:6px;">
-              <span style="color:#f5b800;font-size:.9rem;">★★★★★</span>
-              <span style="font-weight:700;font-size:.88rem;color:var(--text);">4.7</span>
-              <span style="color:var(--text-muted);font-size:.82rem;">(617 отзива)</span>
+            <div style="display:flex;align-items:center;gap:6px;margin-top:6px;" role="img" aria-label="Рейтинг 4.7 от 5 звезди от 617 отзива">
+              <span style="color:#f5b800;font-size:.9rem;" aria-hidden="true">★★★★★</span>
+              <span style="font-weight:700;font-size:.88rem;color:var(--text);" aria-hidden="true">4.7</span>
+              <span style="color:var(--text-muted);font-size:.82rem;" aria-hidden="true">(617 отзива)</span>
             </div>
           </div>
         </div>
@@ -1145,7 +1176,7 @@
 
   <div class="testimonials-grid">
     <div class="testimonial-card reveal">
-      <div class="t-stars">★★★★★</div>
+      <div class="t-stars" role="img" aria-label="5 от 5 звезди"><span aria-hidden="true">★★★★★</span></div>
       <p class="t-text">Децата ще са в сигурни ръце. Успех Бобо!</p>
       <div class="t-author">
         
@@ -1156,7 +1187,7 @@
       </div>
     </div>
     <div class="testimonial-card reveal" style="transition-delay:.1s">
-      <div class="t-stars">★★★★★</div>
+      <div class="t-stars" role="img" aria-label="5 от 5 звезди"><span aria-hidden="true">★★★★★</span></div>
       <p class="t-text">Страхотен пример за младите футболисти, не само като професионалист, но и като човек!</p>
       <div class="t-author">
         
@@ -1167,7 +1198,7 @@
       </div>
     </div>
     <div class="testimonial-card reveal" style="transition-delay:.2s">
-      <div class="t-stars">★★★★★</div>
+      <div class="t-stars" role="img" aria-label="5 от 5 звезди"><span aria-hidden="true">★★★★★</span></div>
       <p class="t-text">Страхотен треньор и човек!</p>
       <div class="t-author">
         
@@ -1178,7 +1209,7 @@
       </div>
     </div>
     <div class="testimonial-card reveal" style="transition-delay:.3s">
-      <div class="t-stars">★★★★★</div>
+      <div class="t-stars" role="img" aria-label="5 от 5 звезди"><span aria-hidden="true">★★★★★</span></div>
       <p class="t-text">Успех, Бобка, дано вземат от твоята скромност извън терена и стараниeто и отдадеността на терена. 🍀</p>
       <div class="t-author">
         
@@ -1193,7 +1224,7 @@
 
 </main>
 
-<!-- BOOKING<!-- BOOKING<!-- BOOKING<!-- FOOTER -->
+<!-- FOOTER -->
 <footer>
   <div class="footer-grid">
     <div class="footer-brand">
@@ -1217,10 +1248,10 @@
     <div class="footer-col">
       <h5>Контакти</h5>
       <ul>
-        <li><a href="tel:0898660428">📞 0898 660 428</a></li>
-        <li><a href="mailto:btyutyukov7@icloud.com">✉️ btyutyukov7@icloud.com</a></li>
-        <li><a href="#">📍 Зала Атрим, Пловдив</a></li>
-        <li><a href="https://www.instagram.com/pro.football.condition" target="_blank" rel="noopener noreferrer">📸 @pro.football.condition</a></li>
+        <li><a href="tel:0898660428"><span aria-hidden="true">📞</span> 0898 660 428</a></li>
+        <li><a href="mailto:btyutyukov7@icloud.com"><span aria-hidden="true">✉️</span> btyutyukov7@icloud.com</a></li>
+        <li><a href="#"><span aria-hidden="true">📍</span> Зала Атрим, Пловдив</a></li>
+        <li><a href="https://www.instagram.com/pro.football.condition" target="_blank" rel="noopener noreferrer"><span aria-hidden="true">📸</span> @pro.football.condition</a></li>
       </ul>
     </div>
   </div>
@@ -1251,7 +1282,7 @@
 <div style="position:fixed;bottom:24px;right:24px;z-index:999;display:flex;flex-direction:column;gap:12px;align-items:flex-end;">
 
   <!-- Phone -->
-  <a href="tel:0898660428" title="Обади се"
+  <a href="tel:0898660428" title="Обади се" aria-label="Обади се на 0898 660 428"
      style="width:54px;height:54px;border-radius:50%;background:#fff;box-shadow:0 4px 20px rgba(0,0,0,.18);display:flex;align-items:center;justify-content:center;text-decoration:none;transition:transform .2s,box-shadow .2s;"
      onmouseover="this.style.transform='scale(1.1)';this.style.boxShadow='0 8px 28px rgba(0,0,0,.25)'"
      onmouseout="this.style.transform='';this.style.boxShadow='0 4px 20px rgba(0,0,0,.18)'">
@@ -1261,7 +1292,7 @@
   </a>
 
   <!-- WhatsApp -->
-  <a href="https://wa.me/359898660428" target="_blank" rel="noopener noreferrer" title="WhatsApp"
+  <a href="https://wa.me/359898660428" target="_blank" rel="noopener noreferrer" title="WhatsApp" aria-label="Пиши в WhatsApp"
      style="width:54px;height:54px;border-radius:50%;background:#25D366;box-shadow:0 4px 20px rgba(37,211,102,.45);display:flex;align-items:center;justify-content:center;text-decoration:none;transition:transform .2s,box-shadow .2s;"
      onmouseover="this.style.transform='scale(1.1)';this.style.boxShadow='0 8px 28px rgba(37,211,102,.6)'"
      onmouseout="this.style.transform='';this.style.boxShadow='0 4px 20px rgba(37,211,102,.45)'">
@@ -1271,7 +1302,7 @@
   </a>
 
   <!-- Viber -->
-  <a href="viber://chat?number=359898660428" title="Viber"
+  <a href="viber://chat?number=359898660428" title="Viber" aria-label="Пиши във Viber"
      style="width:54px;height:54px;border-radius:50%;background:#7360F2;box-shadow:0 4px 20px rgba(115,96,242,.45);display:flex;align-items:center;justify-content:center;text-decoration:none;transition:transform .2s,box-shadow .2s;"
      onmouseover="this.style.transform='scale(1.1)';this.style.boxShadow='0 8px 28px rgba(115,96,242,.6)'"
      onmouseout="this.style.transform='';this.style.boxShadow='0 4px 20px rgba(115,96,242,.45)'">
